@@ -10,7 +10,7 @@ class Group(models.Model):
     name = models.CharField(max_length=200)
     email = models.EmailField("Email", max_length=200, unique=True)
     phone = models.CharField(max_length= 20, null=True)
-    about = models.CharField(max_length=200)
+    about = models.TextField(max_length=200)
 
     #Define default String to return the name for representing the Model object."
     def __str__(self):
@@ -46,20 +46,17 @@ class Event(models.Model):
         ('9', '9-10 years'),
         ('10', '10-11 years'),
         ('11', '11-12 years'),
-        ('12', '12-13 years'),
-        ('13', '13-14 years'),
-        ('14', '14-15 years'),
-        ('15', '15-16 years'),
-        ('16+', '16 or older'),
+        ('12', '12-13 year'),
+        ('13+', '13 or older'),
         ('P', 'For Parents'),
         ('All', 'All ages'),
     )
 
     title = models.CharField(max_length=200)
-    age_group = MultiSelectField(choices=AGEGROUP, max_length=3)
     service_type = models.CharField("Type of Event", max_length=200, choices=SERVICES)
     price = models.DecimalField(max_digits=5, decimal_places=2)
-    description = models.CharField(max_length=200)
+    description = models.TextField(max_length=200)
+    age_group = MultiSelectField(choices=AGEGROUP, max_length=3)
     start_date = models.DateTimeField("Start Date", auto_now=False, auto_now_add=False, null=True)
     end_date = models.DateTimeField("End Date", auto_now=False, auto_now_add=False, null=True)
     location = models.CharField("Location", max_length=200, null = True)
@@ -69,7 +66,7 @@ class Event(models.Model):
 
     #Define default String to return the name for representing the Model object."
     def __str__(self):
-        return self.name
+        return self.title
 
     #Returns the URL to access a particular instance of MyModelName.
     #if you define this method then Django will automatically

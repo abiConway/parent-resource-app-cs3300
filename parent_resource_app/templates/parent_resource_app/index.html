@@ -4,7 +4,16 @@
 
 <!-- Replace block content in base_template.html -->
 {% block content %}
-<h1>Home page</h1>
+<h1>Upcoming Events</h1>
+    <ul>
+        {% for event in future_events %}<li class="a"><strong>Name: </strong>{{i.name}}
+            <p><strong>Portfolio: </strong>{{i.portfolio.title}}</p><a href="{{ i.portfolio.get_absolute_url }}" ></a>
+            
+        </li>
+            <li><p><strong>{{ event.title }} </strong> <br> {{ event.start_date|date:"M d H:i" }} - {{ event.end_date|date:"M d H:i" }}<button class="edit_button">View Portfolio</button></p>
+        </li><br>
+        {% endfor %}
+    </ul>
 
 
 
