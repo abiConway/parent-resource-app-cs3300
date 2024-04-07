@@ -1,0 +1,47 @@
+{% load static %}
+{% load django_bootstrap5 %}
+ 
+
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  {% bootstrap_css %}
+  {% bootstrap_messages %}
+  {% bootstrap_javascript %}
+  <title>Parent Resouces</title>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+ </head>
+
+
+ <body>
+   
+     <!-- Navbar-->
+
+      
+      <nav class="navbar-expand">
+        <span> <a class="nav-link active" aria-current="page" href="{% url 'index' %}"><img src="{% static 'images/colorado_logo.jpeg' %}" style="width:100px; height:100px;"></a></span>
+        <ul class="nav nav-tabs inline">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'groups' %}">GROUPS</a>
+          </li>
+          
+        </ul>
+      </nav>
+
+    <br>
+
+    <div class="container-fluid" >
+       <div class="col-sm-10">
+         <!-- add block content from html template -->
+         {% block content %}
+         
+         {% endblock %}
+       </div>
+     </div>
+   </div>
+ </body>
+</html>
+
