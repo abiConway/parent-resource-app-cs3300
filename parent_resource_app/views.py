@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import *
 from django.http import HttpResponse
 from .models import *
 from django.views import generic
@@ -20,8 +20,16 @@ def index(request):
     return render(request, 'parent_resource_app/index.html', {'future_events': future_events})
 
 
+
 class GroupListView(generic.ListView):
    model = Group
 
 class GroupDetailView(generic.DetailView):
    model = Group
+
+   
+class EventListView(generic.ListView):
+   model = Event
+
+class EventDetailView(generic.DetailView):
+   model = Event

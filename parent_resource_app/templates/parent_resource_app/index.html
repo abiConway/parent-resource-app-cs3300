@@ -6,11 +6,15 @@
 {% block content %}
 <h1>Upcoming Events</h1>
     <ul>
-        {% for event in future_events %}<li class="a"><strong>Name: </strong>{{i.name}}
-            <p><strong>Portfolio: </strong>{{i.portfolio.title}}</p><a href="{{ i.portfolio.get_absolute_url }}" ></a>
-            
-        </li>
-            <li><p><strong>{{ event.title }} </strong> <br> {{ event.start_date|date:"M d H:i" }} - {{ event.end_date|date:"M d H:i" }}<button class="edit_button">View Portfolio</button></p>
+        {% for event in future_events %}
+        
+        <li class="list-group">
+            <h2>{{ event.title }} </h2><br> 
+            <p>
+                {{ event.start_date|date:"M d" }} - {{ event.end_date|date:"M d" }}
+                <a href="{{ event.get_absolute_url }}" ><button class="edit_button">View Event</button>
+                <a href="{{ event.group.get_absolute_url }}" ><button class="edit_button">View Group</button>
+            </p>
         </li><br>
         {% endfor %}
     </ul>
