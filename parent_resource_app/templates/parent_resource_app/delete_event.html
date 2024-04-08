@@ -1,0 +1,12 @@
+{% extends 'parent_resource_app/base_template.html' %}
+
+{% block content%}
+
+<p>Are you sure you want to delete "{{ event.title }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirm Delete</button>
+        <a href="{% url 'group-detail' event.group_id %}">Cancel</a>
+    </form>
+    
+{%endblock%} 

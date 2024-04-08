@@ -2,23 +2,22 @@
 
 {% block content%}
 
-    <h1><strong>Title:</strong> {{ portfolio.title }}</h1><p><a aria-current="page" href="{% url 'updatePortfolio' portfolio.id %}"><button class="edit_button">Edit Portfolio</button></a></p>
-    <p><strong>Student Name:</strong> {{portfolio.student.name}}</p>
-    <p><strong>Portfolio Active: </strong> {{portfolio.is_active }}</p>
-    <p><strong>Contact Email:</strong> {{portfolio.contact_email}}</p>
-    <p><strong>About:</strong><br> {{portfolio.about}}</p>
-    <h2><strong>Projects:</strong></h2> <a aria-current="page" href="{% url 'createProject' portfolio.id %}"><button class="edit_button">New Project</button></a>
+    <h1><strong>Name:</strong> {{ group.title }}</h1><p><a aria-current="page" href="{% url 'updateGroup' group.id %}"><button class="edit_button">Edit Group Info</button></a></p> 
+    <p><strong>Email:</strong> {{group.email}}</p>
+    <p><strong>About:</strong><br> {{group.about}}</p>
+    <h2><strong>Events:</strong></h2> <a aria-current="page" href="{% url 'createEvent' group.id %}"><button class="edit_button">Create New Event</button></a> 
     <br><br>
-    {% if portfolio.project_set.all %}
+    {% if group.event_set.all %}
         <ul>
-           {% for proj in portfolio.project_set.all %}
-              <li class="a"><a class="textlink" href="{{ proj.get_absolute_url }}" >{{ proj.title }}</a><br><br>
-              <a aria-current="page" href="{% url 'updateProject' portfolio.id proj.id %}" ><button class="edit_button">Edit</button></a>
-              <a aria-current="page" href="{% url 'deleteProject' portfolio.id proj.id %}"><button class="edit_button">Delete</button></a></li><br>
+           {% for event in group.event_set.all %}
+              <li class="a"><a class="textlink" href="{{ event.get_absolute_url }}" >{{ event.title }}</a><br><br>
+              <a aria-current="page" href="{% url 'updateEvent' group.id event.id %}" ><button class="edit_button">Edit</button></a>
+              <a aria-current="page" href="{% url 'deleteEvent' group.id event.id %}"><button class="edit_button">Delete</button></a> 
+            </li><br>
            {% endfor %}
         </ul>
     {% else %}
-        <p>There are no projects for this portfolio.</p>
+        <p>There are no events from this group.</p>
     {% endif %}
        
 

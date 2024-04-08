@@ -11,11 +11,10 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('groups/', views.GroupListView.as_view(), name='groups'),
     path('groups/<int:pk>', views.GroupDetailView.as_view(), name='group-detail'),
-    #path('')
-
+    
     path('events/<int:pk>/', views.EventDetailView.as_view(), name='event-detail'),
-    #path('portfolio/<int:portfolio_id>/createProject', views.createProject, name='createEvent'),
-    #path('portfolio/<int:portfolio_id>/updateProject/<int:project_id>', views.updateProject, name='updateEvent'),
-    #path('portfolio/<int:portfolio_id>/deleteProject/<int:project_id>', views.deleteProject, name='deleteEvent'),
-    #path('portfolio/<int:portfolio_id>/updatePortfolio', views.updatePortfolio, name='updateGroup'),
+    path('group/<int:group_id>/createEvent', views.createEvent, name='createEvent'),
+    path('group/<int:group_id>/updateEvent/<int:event_id>', views.updateEvent, name='updateEvent'),
+    path('group/<int:group_id>/deleteEvent/<int:event_id>', views.deleteEvent, name='deleteEvent'),
+    path('group/<int:group_id>/updateGroup', views.updateGroup, name='updateGroup'),
 ]
