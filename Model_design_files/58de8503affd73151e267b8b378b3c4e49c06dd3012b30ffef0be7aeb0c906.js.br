@@ -1,6 +1,0 @@
-i18n.setData(
-    JSON.parse(
-        "{\"plugin-networkinfrastructure-bottom-nodes\":\"Bottom Nodes\",\"plugin-networkinfrastructure-top-nodes\":\"Top Nodes\"}"
-    ),
-    'en'
-);

@@ -1,6 +1,0 @@
-i18n.setData(
-    JSON.parse(
-        "{\"data-diff-csv-change-type-added\":\"Added\",\"data-diff-csv-change-type-deleted\":\"Deleted\",\"data-diff-csv-change-type-header\":\"Change Type\",\"data-diff-csv-change-type-modified\":\"Modified\",\"data-diff-dialog-csv-download\":\"Download All Data as CSV\",\"data-diff-dialog-csv-download-changes\":\"Download Changes as CSV\",\"data-diff-dialog-subtitle\":\"Changes to {name}\",\"data-diff-tag-deleted-row.one\":\"{count} row deleted\",\"data-diff-tag-deleted-row.other\":\"{count} rows deleted\",\"data-diff-tag-modified-row.one\":\"{count} row changed\",\"data-diff-tag-modified-row.other\":\"{count} rows changed\",\"data-diff-tag-new-row.one\":\"{count} new row\",\"data-diff-tag-new-row.other\":\"{count} new rows\",\"dialog-default-cancel\":\"Cancel\",\"orgchart-data-export-csv-title\":\"Export as CSV\"}"
-    ),
-    'en'
-);

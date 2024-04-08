@@ -1,6 +1,0 @@
-i18n.setData(
-    JSON.parse(
-        "{\"orgchart-filter-empty-state-delete-block\":\"You deleted your Org Chart.\",\"templateheader-categories-org-chart\":\"Org Chart\"}"
-    ),
-    'en'
-);

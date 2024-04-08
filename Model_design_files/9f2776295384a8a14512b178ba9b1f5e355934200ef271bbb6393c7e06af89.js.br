@@ -1,2 +1,0 @@
-var UcwYj=class extends UcKyj{constructor(a,b,c,d,e){super(a,c,d,b);this.Lmh=e}Ca(a){const b="sample"==a?this.size.value:this.size.Ub();"sample"!=a&&this.dz.content.value.Vc.length&&this.a_.value&&(b.h-=this.zy.value);return b}J(a,b){return Ucz(a)(b)}C(a,b,c,d,e){return Ucp.lH(a,d,e,b,c)}Fa(){return this.properties.fillColor.value}ea(a,b,c,d=this.Fa()){return UcBr(d,a,b,c)}static ur(a,b){return()=>({AspectRatio:a/b})}};
-//# sourceURL=/js/application/universalcanvas_app/chunk/gen_20000000000044000000.js?compiled=1

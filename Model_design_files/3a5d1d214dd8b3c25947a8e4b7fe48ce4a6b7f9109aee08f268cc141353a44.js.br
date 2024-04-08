@@ -1,6 +1,0 @@
-i18n.setData(
-    JSON.parse(
-        "{\"dynamic-data-error-display-text\":\"#ERROR!\",\"infographics-dynamic-shape-name\":\"Dynamic Shape\",\"infographics-library-keywords\":\"dynamic shapes,progress bar,progress pill,progress donut,progress pie,progress half donut,progress half pie,pie chart,infographic,dynamic\",\"infographics-library-progress-half-donut-name\":\"Progress Half Donut\",\"infographics-library-progress-half-pie-name\":\"Progress Half Pie\",\"infographics-library-progress-pie-name\":\"Progress Pie\",\"infographics-library-progress-pill-name\":\"Progress Pill\"}"
-    ),
-    'en'
-);

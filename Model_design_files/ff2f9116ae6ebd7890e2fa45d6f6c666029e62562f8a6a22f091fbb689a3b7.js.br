@@ -1,6 +1,0 @@
-i18n.setData(
-    JSON.parse(
-        "{\"plugin-mindmapping-toolgroup-buttons-export\":\"Export\",\"plugin-mindmapping-toolgroup-buttons-import\":\"Import\",\"plugin-mindmapping-toolgroup-name\":\"Mind Map\",\"plugin-mindmapping-toolgroup-name-v2\":\"Mind Map Shapes\"}"
-    ),
-    'en'
-);

@@ -1,6 +1,0 @@
-i18n.setData(
-    JSON.parse(
-        "{\"orgchart-import-csv-file-name\":\"Org Chart Data\",\"orgchart-new-orgchart\":\"New Org Chart\",\"orgchart-panel-title\":\"Org Chart\",\"plugin-orgchart2-import-data\":\"Import Data\",\"plugin-orgchart2018-toolgroup-name\":\"Org Chart\"}"
-    ),
-    'en'
-);

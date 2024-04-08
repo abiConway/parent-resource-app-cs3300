@@ -1,6 +1,0 @@
-i18n.setData(
-    JSON.parse(
-        "{\"orgchart-new-page\":\"We created a new page for your Org Chart.\",\"orgchart-new-pages\":\"We created new pages for each of your Org Charts.\",\"orgchart-paste-non-orgchart-shape\":\"Exit your Org Chart to paste non-employee shapes.\",\"orgchart-paste-other-document\":\"Sorry, you can't paste Org Charts into other documents.\",\"orgchart-type-empty-primary-key\":\"Sorry, the field you're using to track employees can't be left empty.\",\"plugin-orgchart2-my-organization\":\"My Organization\"}"
-    ),
-    'en'
-);

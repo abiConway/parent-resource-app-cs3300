@@ -1,6 +1,0 @@
-i18n.setData(
-    JSON.parse(
-        "{\"import-area-delete-file-button-aria-label\":\"Delete imported file\",\"import-choose-file\":\"Choose file\",\"import-choose-files\":\"Choose files\",\"import-error-unknown\":\"Unknown error\",\"import-file-limit-message\":\"You've reached the upload limit of {limit} files.\",\"import-replace-message\":\"Replace\"}"
-    ),
-    'en'
-);
