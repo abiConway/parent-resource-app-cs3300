@@ -5,7 +5,7 @@
     {% if group_list %}
         <ul class="list-group">
             {% for group in group_list %}
-                <li class="a"><h2>{{ group.name }}</h2>
+                <li class="a"><h2 class="normal">{{ group.name }}</h2>
                     <p><strong>About: </strong>{{group.about}}</p>
                     <a href="{{ group.get_absolute_url }}"><button class="edit_button">View Details</button></a>
                 </li> <br>
