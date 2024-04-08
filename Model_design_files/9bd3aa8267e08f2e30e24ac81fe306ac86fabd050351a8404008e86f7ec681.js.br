@@ -1,0 +1,6 @@
+i18n.setData(
+    JSON.parse(
+        "{\"plugin-mindmapping-child-default-text\":\"New Idea\",\"plugin-mindmapping-default-text\":\"Mind Map\",\"plugin-mindmapping-shapes-circle\":\"Circle\",\"plugin-mindmapping-shapes-cloud\":\"Cloud\",\"plugin-mindmapping-shapes-cross\":\"Cross\",\"plugin-mindmapping-shapes-diamond\":\"Diamond\",\"plugin-mindmapping-shapes-hexagon\":\"Hexagon\",\"plugin-mindmapping-shapes-octagon\":\"Octagon\",\"plugin-mindmapping-shapes-pentagon\":\"Pentagon\",\"plugin-mindmapping-shapes-pill\":\"Pill\",\"plugin-mindmapping-shapes-pill-keywords\":\"stadium\",\"plugin-mindmapping-shapes-rectangle\":\"Rectangle\",\"plugin-mindmapping-shapes-triangle\":\"Triangle\",\"plugin-mindmapping-shapes-triangle-keywords\":\"isosceles\"}"
+    ),
+    'en'
+);

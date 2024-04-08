@@ -2,9 +2,9 @@
 
 {% block content%}
 
-    <h1><strong>Name:</strong> {{ group.title }}</h1><p><a aria-current="page" href="{% url 'updateGroup' group.id %}"><button class="edit_button">Edit Group Info</button></a></p> 
-    <p><strong>Email:</strong> {{group.email}}</p>
-    <p><strong>About:</strong><br> {{group.about}}</p>
+    <h1>{{ group.name }}</h1><p><a aria-current="page" href="{% url 'updateGroup' group.id %}"><button class="edit_button">Edit Group Info</button></a></p> 
+    <p class="detail"><strong>Email:</strong> {{group.email}}</p>
+    <p class="detail"><strong>About:</strong><br> {{group.about}}</p>
     <h2><strong>Events:</strong></h2> <a aria-current="page" href="{% url 'createEvent' group.id %}"><button class="edit_button">Create New Event</button></a> 
     <br><br>
     {% if group.event_set.all %}

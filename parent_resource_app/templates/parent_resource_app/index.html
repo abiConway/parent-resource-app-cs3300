@@ -4,20 +4,29 @@
 
 <!-- Replace block content in base_template.html -->
 {% block content %}
-<h1>Upcoming Events</h1>
-    <ul>
+<h1>Upcoming Events</h1><br>
+{% if future_events %}
+    <ul class="list-group">
         {% for event in future_events %}
-        
-        <li class="list-group">
-            <h2>{{ event.title }} </h2><br> 
-            <p>
-                {{ event.start_date|date:"M d" }} - {{ event.end_date|date:"M d" }}
-                <a href="{{ event.get_absolute_url }}" ><button class="edit_button">View Event</button>
-                <a href="{{ event.group.get_absolute_url }}" ><button class="edit_button">View Group</button>
-            </p>
-        </li><br>
+            <li class="a">
+                <h2>{{ event.title }} </h2><br> 
+                <p>
+                    {{ event.description }} <br>Ages: {{ event.age_group }}
+                    <br> {{ event.start_date|date:"M d" }} - {{ event.end_date|date:"M d" }} 
+                    <br>From: {{ event.group.name }} 
+                    <br>
+                </p>
+            
+                <a href="{{ event.get_absolute_url }}" ><button class="edit_button">View Event Details</button></a>
+                <a href="{{ event.group.get_absolute_url }}" ><button class="edit_button">View Group Details</button></a>
+           
+            </li><br>
         {% endfor %}
     </ul>
+
+    {% else %}
+        <p>There are no upcoming events registered.</p>
+    {% endif %}
 
 
 

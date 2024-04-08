@@ -4,7 +4,7 @@ from .models import *
 from django.views import generic
 from django.utils import timezone
 from django.db.models import Q
-from .forms import EventForm, CreateUserForm, GroupForm
+from .forms import *
 
 # Create your views here.
 
@@ -30,6 +30,7 @@ def createEvent(request, group_id):
       event_data['group_id'] = group_id
       form = EventForm(event_data)
       if form.is_valid():
+         start_date = form.cleaned_data['start_date']
          #Save the form without committing to the database
          event = form.save(commit=False)
          #Set the group relationship

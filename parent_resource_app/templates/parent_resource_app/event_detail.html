@@ -1,7 +1,16 @@
 {% extends 'parent_resource_app/base_template.html' %}
 
 {% block content%}
-    <p><strong>Title: </strong> {{event.title}}</p>
-    <p><strong>Description: </strong> {{event.description}}</p>
+    <h1>{{event.title}}</h1>
+    <p class="detail"><strong>Event Type: </strong> {{event.service_type}}</p>
+    <p class="detail"><strong>Price: </strong> {{event.price}}</p>
+    <p class="detail"><strong>Description: </strong> {{event.description}}</p>
+    <p class="detail"><strong>For Ages: </strong> {{event.age_group}}</p>
+    <p class="detail">Where: {{event.location}}</p>
+    <p class="detail">When: {{ event.start_date|date:"M d" }} - {{ event.end_date|date:"M d" }} <br> {{ event.start_date|date:"H:i" }} - {{ event.end_date|date:"H:i" }}</p>
 
+    <p>
+        <a aria-current="page" href="{% url 'updateEvent' event.group.id event.id %}" ><button class="edit_button">Edit</button></a>
+        <a aria-current="page" href="{% url 'deleteEvent' event.group.id event.id %}"><button class="edit_button">Delete</button></a> 
+    </p>
 {% endblock %}

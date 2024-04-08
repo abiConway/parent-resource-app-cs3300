@@ -8,10 +8,79 @@
   {% bootstrap_css %}
   {% bootstrap_messages %}
   {% bootstrap_javascript %}
+
   <title>Parent Resouces</title>
-  
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <link rel="stylesheet" href="static/css/basics.css"> -->
+  <style>
+    h1{
+      padding-left: 10px;
+      font-weight: bold;
+    }
+    h2{
+      padding-left:10px;
+    }
+    
+    .detail{
+      padding-left:10px;
+    }
+
+   .list-group{
+      padding-left: 10px;
+   }
+
+    .a{
+      list-style: none;
+      padding:10px;
+      border:solid;
+      border-radius: 5px;
+      background-color: #dae1d7;
+      color: black;
+
+    }
+
+    .button{
+      float: right;
+      font-weight: 500;
+      background-color: #7f887a;
+      color: black;
+      border-radius: 10px;
+      margin-left:10px;
+    }  
+
+    .edit_button{
+      font-weight: 500;
+      background-color: #7f887a;
+      color: black;
+      border-radius: 10px;
+      margin-left:10px;
+      
+    }  
+
+    body{
+      background-color: #b4aebe;
+      color: black;
+    }
+
+    .textlink{
+      color: black;
+      text-decoration: none;
+      font-size: 30px;
+    }
+
+    nav {
+      color: white;
+      font-weight: bold;
+      background-color: #898197;
+    }
+
+    .nav-tabs .nav-item .nav-link.active {
+      color: black;
+      border-bottom: 4px solid #9a2c24b0;
+    }
+  
+  </style>
    
  </head>
 
@@ -20,15 +89,17 @@
    
      <!-- Navbar-->
 
-      
-      <nav class="navbar-expand">
-        <span> <a class="nav-link active" aria-current="page" href="{% url 'index' %}"><img src="{% static 'images/colorado_logo.jpeg' %}" style="width:100px; height:100px;"></a></span>
-        <ul class="nav nav-tabs inline">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'groups' %}">GROUPS</a>
-          </li>
-          
-        </ul>
+
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" aria-current="page" href="{% url 'index' %}">HOME</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a class="nav-link active" aria-current="page" href="{% url 'groups' %}">GROUPS</a></li>
+          </ul>
+          <span><img src="{% static 'images/colorado_logo.jpeg' %}" style="width:100px; height:100px;"></span>
+        </div>
       </nav>
 
     <br>

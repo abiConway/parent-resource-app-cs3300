@@ -1,0 +1,52 @@
+ul {
+    list-style-type: square;
+    border-style: round; 
+}
+
+.a{
+    list-style: none;
+    padding:10px;
+    border:solid;
+    border-radius: 5px;
+    background-color: darkgrey;
+
+}
+
+.button{
+    float: right;
+    font-family: arial;
+    font-weight: 500;
+    background-color: #9a2c24b0;
+    color: black;
+    border-radius: 10px;
+}  
+
+.edit_button{
+    font-family: arial;
+    font-weight: 500;
+    background-color: #bf9928;
+    color: black;
+    border-radius: 10px;
+}  
+
+body{
+  background-color: lightgray;
+  color: black;
+  }
+
+.textlink{
+  color: black;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+  nav {
+    
+    color: black;
+    font-weight: bold;
+    background-color: white;    
+  }
+  .nav-tabs .nav-item .nav-link.active {
+    color: black;
+    border-bottom: 4px solid #bf9928;
+   }

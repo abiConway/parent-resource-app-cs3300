@@ -1,3 +1,4 @@
+from django import forms
 from django.forms import ModelForm
 from .models import Group, Event
 from django.contrib.auth.forms import UserCreationForm
@@ -14,7 +15,17 @@ class GroupForm(ModelForm):
     class Meta:
         model = Group
         fields =('name', 'email', 'phone', 'about')
-        
+
+
+start_date = forms.DateTimeField(
+    widget=forms.DateInput(
+        attrs={
+            'class' : 'form-control',
+            'type' : "date"
+        }
+    ),
+
+)        
 
 class CreateUserForm(ModelForm):
     class Meta:
