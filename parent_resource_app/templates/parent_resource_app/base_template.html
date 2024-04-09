@@ -86,7 +86,7 @@
 
     .nav-tabs .nav-item .nav-link.active {
       color: black;
-      border-bottom: 4px solid #9a2c24b0;
+      border-bottom: 4px solid #b4aebe;
     }
   
   </style>
@@ -96,22 +96,22 @@
 
  <body>
    
-     <!-- Navbar--> 
-
-     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <img src="{% static 'images/colorado_logo.jpeg' %}" style="width:100px; height:100px;">
-      <div class="container-fluid">
-
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <!--  {% url 'index' %}  is defined in url path to dynamically create url -->
-            <a class="navbar-brand" aria-current="page" href="{% url 'index' %}">HOME</a>
-            <a class="nav-link active" aria-current="page" href="{% url 'groups' %}">GROUPS</a>
-          </div>
+     <!-- Navbar-->
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          
+          <ul class="nav nav-tabs">
+            
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'index' %}">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'groups' %}">GROUPS</a>
+            </li>
+          </ul>
         </div>
-      </div>
-    </nav>
-      
+        <img src="{% static 'images/colorado_logo.jpeg' %}" style="width:100px; height:100px;">
+      </nav>
     <br>
 
     <div class="container-fluid" >
