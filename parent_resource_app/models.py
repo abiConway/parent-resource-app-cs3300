@@ -58,8 +58,8 @@ class Event(models.Model):
     price = models.DecimalField(max_digits=5, decimal_places=2)
     description = models.TextField(max_length=200)
     age_group = MultiSelectField(choices=AGEGROUP, max_length=25)
-    start_date = models.DateTimeField("Start Date", auto_now=False, auto_now_add=False, null=True, blank=True)
-    end_date = models.DateTimeField("End Date", auto_now=False, auto_now_add=False, null=True, blank=True)
+    start_date = models.DateField("Start Date", auto_now=False, auto_now_add=False, null=True, blank=True)
+    end_date = models.DateField("End Date", auto_now=False, auto_now_add=False, null=True, blank=True)
     location = models.CharField("Location", max_length=200, null = True, blank=True)
 
     group = models.ForeignKey(Group, on_delete=models.CASCADE, default=None)

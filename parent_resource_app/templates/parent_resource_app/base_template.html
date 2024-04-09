@@ -47,7 +47,7 @@
     .button{
       float: left;
       font-weight: 500;
-      background-color: #7f887a;
+      background-color: lightgray;
       color: black;
       border-radius: 10px;
       margin-left:10px;
@@ -55,13 +55,18 @@
 
     .edit_button{
       font-weight: 500;
-      background-color: #7f887a;
+      background-color: #898197;
       color: black;
       border-radius: 10px;
      
       
     }  
 
+    .form{
+      margin-left = 10px;
+      border-radius: 10px;
+
+    }
     body{
       background-color: #b4aebe;
       color: black;
@@ -93,19 +98,22 @@
    
      <!-- Navbar-->
 
-
-      <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-          <div class="navbar-header">
+     <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <img src="{% static 'images/colorado_logo.jpeg' %}" style="width:100px; height:100px;">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <!--  {% url 'index' %}  is defined in url path to dynamically create url -->
             <a class="navbar-brand" aria-current="page" href="{% url 'index' %}">HOME</a>
+            <a class="nav-link active" aria-current="page" href="{% url 'groups' %}">GROUPS</a>
           </div>
-          <ul class="nav navbar-nav">
-            <li class="active"><a class="nav-link active" aria-current="page" href="{% url 'groups' %}">GROUPS</a></li>
-          </ul>
-          <span><img src="{% static 'images/colorado_logo.jpeg' %}" style="width:100px; height:100px;"></span>
         </div>
-      </nav>
-
+      </div>
+    </nav>
+      
     <br>
 
     <div class="container-fluid" >

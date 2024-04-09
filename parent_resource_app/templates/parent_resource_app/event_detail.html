@@ -7,7 +7,7 @@
     <p class="detail"><strong>Description: </strong> {{event.description}}</p>
     <p class="detail"><strong>For Ages: </strong> {{event.age_group}}</p>
     <p class="detail"><strong>Where: </strong> {{event.location}}</p>
-    <p class="detail"><strong>When: </strong> {{ event.start_date|date:"M d" }} - {{ event.end_date|date:"M d" }} <br> {{ event.start_date|date:"H:i" }} - {{ event.end_date|date:"H:i" }}</p>
+    <p class="detail"><strong>When: </strong> {{ event.start_date|date:"M d" }} - {{ event.end_date|date:"M d" }}</p>
 
     <p>
         <a aria-current="page" href="{% url 'updateEvent' event.group.id event.id %}" ><button class="edit_button">Edit</button></a>
