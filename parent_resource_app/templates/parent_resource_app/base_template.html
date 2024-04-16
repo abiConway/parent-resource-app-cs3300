@@ -82,11 +82,15 @@
       color: white;
       font-weight: bold;
       background-color: #898197;
+  
     }
 
     .nav-tabs .nav-item .nav-link.active {
       color: black;
       border-bottom: 4px solid #b4aebe;
+ 
+      bottom: 10px:
+    
     }
   
   </style>
@@ -97,10 +101,11 @@
  <body>
    
      <!-- Navbar-->
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <nav class="navbar navbar-expand">
+        <a class="nav-link active" aria-current="page" href="{% url 'index' %}"><img src="{% static 'images/colorado_logo.png' %}" style="width:225px; height:100px;"></a>
         <div class="container-fluid">
           
-          <ul class="nav nav-tabs">
+          <ul class="nav nav-tabs navbar-bottom">
             
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="{% url 'index' %}">HOME</a>
@@ -110,7 +115,7 @@
             </li>
           </ul>
         </div>
-        <img src="{% static 'images/colorado_logo.jpeg' %}" style="width:100px; height:100px;">
+        
       </nav>
     <br>
 
