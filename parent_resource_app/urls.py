@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 
@@ -9,12 +9,17 @@ urlpatterns = [
 # name='index' parameter is to dynamically create url
 # example in html <a href="{% url 'index' %}">Home</a>.
     path('', views.index, name='index'),
-    path('groups/', views.GroupListView.as_view(), name='groups'),
-    path('groups/<int:pk>', views.GroupDetailView.as_view(), name='group-detail'),
-    
+    path('groups/', views.OrganizationListView.as_view(), name='organizations'),
+    path('groups/<int:pk>', views.OrganizationDetailView.as_view(), name='organization-detail'),
     path('events/<int:pk>/', views.EventDetailView.as_view(), name='event-detail'),
-    path('group/<int:group_id>/createEvent', views.createEvent, name='createEvent'),
-    path('group/<int:group_id>/updateEvent/<int:event_id>', views.updateEvent, name='updateEvent'),
-    path('group/<int:group_id>/deleteEvent/<int:event_id>', views.deleteEvent, name='deleteEvent'),
-    path('group/<int:group_id>/updateGroup', views.updateGroup, name='updateGroup'),
+    path('group/<int:organization_id>/createEvent', views.createEvent, name='createEvent'),
+    path('group/<int:organization_id>/updateEvent/<int:event_id>', views.updateEvent, name='updateOrganization'),
+    path('group/<int:organization_id>/deleteEvent/<int:event_id>', views.deleteEvent, name='deleteOrganization'),
+    path('group/<int:organization_id>/updateGroup', views.updateOrganization, name='updateOrganization'),
+
+    #user accounts
+    path('accounts/', include('django.contrib.auth.urls')),
+
+    path('accounts/register', views.registerPage, name = 'register-page'),
+
 ]

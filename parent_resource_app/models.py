@@ -1,12 +1,15 @@
 from django.db import models
 from django.urls import reverse
 from multiselectfield import MultiSelectField
+from django.contrib.auth.models import User
 #from django.forms import *
 
 
 # Create your models here.
 
-class Group(models.Model):
+class Organization(models.Model):
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+
     
     name = models.CharField(max_length=200)
     email = models.EmailField("Email", max_length=200, unique=True)
@@ -21,7 +24,7 @@ class Group(models.Model):
     #if you define this method then Django will automatically
     # add a "View on Site" button to the model's record editing screens in the Admin site
     def get_absolute_url(self):
-        return reverse('group-detail', args=[str(self.id)])
+        return reverse('organization-detail', args=[str(self.id)])
 
 
 
@@ -62,7 +65,7 @@ class Event(models.Model):
     end_date = models.DateField("End Date", auto_now=False, auto_now_add=False, null=True, blank=True)
     location = models.CharField("Location", max_length=200, null = True, blank=True)
 
-    group = models.ForeignKey(Group, on_delete=models.CASCADE, default=None)
+    organization = models.ForeignKey(Organization, on_delete=models.CASCADE, default=None)
 
 
     #Define default String to return the name for representing the Model object."

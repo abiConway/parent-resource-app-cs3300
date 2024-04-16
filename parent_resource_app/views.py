@@ -5,6 +5,10 @@ from django.views import generic
 from django.utils import timezone
 from django.db.models import Q
 from .forms import *
+from django.contrib import messages
+from django.contrib.auth.models import Group
+from django.contrib.auth.forms import UserCreationForm
+
 
 # Create your views here.
 
@@ -20,25 +24,25 @@ def index(request):
     # Pass the filtered events to the template
     return render(request, 'parent_resource_app/index.html', {'future_events': future_events})
 
-def createEvent(request, group_id):
+def createEvent(request, organization_id):
    form = EventForm()
-   group = Group.objects.get(pk=group_id)
+   organization = Organization.objects.get(pk=organization_id)
 
    if request.method == 'POST':
-      #Create a new dictionary with form data and group_id
+      #Create a new dictionary with form data and organization_id
       event_data = request.POST.copy()
-      event_data['group_id'] = group_id
+      event_data['organization_id'] = organization_id
       form = EventForm(event_data)
       if form.is_valid():
          start_date = form.cleaned_data['start_date']
          #Save the form without committing to the database
          event = form.save(commit=False)
          #Set the group relationship
-         event.group = group
+         event.organization = organization
          event.save()
 
          #redirect back to the group detail page
-         return redirect('group-detail', group_id)
+         return redirect('organization-detail', organization_id)
    else:
       form = EventForm()
 
@@ -48,24 +52,24 @@ def createEvent(request, group_id):
    
 
 
-def updateEvent(request, group_id, event_id):
+def updateEvent(request, organization_id, event_id):
    event = get_object_or_404(Event, pk=event_id)
-   group = event.group
+   organization = event.organization
 
    if request.method == 'POST':
       #Create a new dictionary with form data and group_id
       event_data = request.POST.copy()
-      event_data['group_id'] = group_id
+      event_data['organization_id'] = organization_id
       form = EventForm(request.POST, instance=event)
       if form.is_valid():
          #Save the form without committing to the database
          event = form.save(commit=False)
          #Set the group relationship
-         event.group = group
+         event.organization = organization
          event.save()
 
          #redirect back to the group detail page
-         return redirect('group-detail', group_id)
+         return redirect('organization-detail', organization_id)
    else:
       form = EventForm(instance=event)
 
@@ -74,7 +78,7 @@ def updateEvent(request, group_id, event_id):
 
 
 
-def deleteEvent(request, group_id, event_id):
+def deleteEvent(request, organization_id, event_id):
    event = get_object_or_404(Event, pk=event_id)
     
    
@@ -82,7 +86,7 @@ def deleteEvent(request, group_id, event_id):
       # Confirming the delete request
       event.delete()
       # Redirect back to the group detail page
-      return redirect('group-detail', group_id)
+      return redirect('organization-detail', organization_id)
 
     # If the request method is not POST (e.g., GET), render the confirmation template
    context = {'event': event}
@@ -90,36 +94,55 @@ def deleteEvent(request, group_id, event_id):
 
 
 
-def updateGroup(request, group_id):
-   group = get_object_or_404(Group, pk=group_id)
+def updateOrganization(request, organization_id):
+   organization = get_object_or_404(Organization, pk=organization_id)
    
    if request.method == 'POST':
       #Create a new dictionary with form data and group_id
-      group_data = request.POST.copy()
-      group_data['group_id'] = group_id
-      form = GroupForm(request.POST, instance=group)
+      organization_data = request.POST.copy()
+      organization_data['organization_id'] = organization_id
+      form = OrganizationForm(request.POST, instance=organization)
       if form.is_valid():
          #Save the form without committing to the database
-         group = form.save(commit=False)
+         organization = form.save(commit=False)
          #Set the group relationship
-         group.group = group
-         group.save()
+         organization.organization = organization
+         organization.save()
 
          #redirect back to the group detail page
-         return redirect('group-detail', group_id)
+         return redirect('organization-detail', organization_id)
    else:
-      form = GroupForm(instance=group)
+      form = OrganizationForm(instance=organization)
 
-   context = {'form': form, 'group': group}
-   return render(request, 'parent_resource_app/update_group.html', context)
+   context = {'form': form, 'organization': organization}
+   return render(request, 'parent_resource_app/update_organization.html', context)
 
 
+def registerPage(request):
+   form = CreateUserForm()
 
-class GroupListView(generic.ListView):
-   model = Group
+   if request.method =='POST':
+      form = CreateUserForm(request.POST)
+      if form.is_valid():
+         user = form.save()
+         username = form.cleaned_data.get('username')
+         group = Group.objects.get(name='organization_role')
+         user.groups.add(group)
+         organization = Organization.objects.create(user=user,)
+         organization.save()
 
-class GroupDetailView(generic.DetailView):
-   model = Group
+         messages.success(request, 'Account was created for ' + username)
+         return redirect('login')
+      
+   context = {'form': form}
+   return render(request, 'registration/register.html', context)
+
+
+class OrganizationListView(generic.ListView):
+   model = Organization
+
+class OrganizationDetailView(generic.DetailView):
+   model = Organization
 
    
 class EventListView(generic.ListView):

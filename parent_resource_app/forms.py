@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Group, Event
+from .models import *
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
@@ -8,14 +8,15 @@ from django.contrib.auth.models import User
 class EventForm(ModelForm):
     class Meta:
         model = Event
-        fields =('title','service_type', 'price', 'description', 'age_group', 'start_date', 'end_date', 'location')
+        fields ='__all__'
+        exclude =['user']
        #widgets = {
         #    'start_date': forms.DateTimeInput(attrs={'placeholder': 'YYYY-MM-DD HH:MM:SS'}),
         #}
         
-class GroupForm(ModelForm):
+class OrganizationForm(ModelForm):
     class Meta:
-        model = Group
+        model = Organization
         fields =('name', 'email', 'phone', 'about')
 
 
@@ -30,10 +31,10 @@ start_date = forms.DateField(
 
 )        
 
-class CreateUserForm(ModelForm):
+class CreateUserForm(UserCreationForm):
     class Meta:
-        model = Group
-        fields =('name', 'email', 'about')
+        model = User
+        fields =['username', 'email', 'password1', 'password2']
 
 
 
