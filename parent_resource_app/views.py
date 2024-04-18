@@ -8,6 +8,11 @@ from .forms import *
 from django.contrib import messages
 from django.contrib.auth.models import Group
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .decorators import allowed_users
+
+
 
 
 # Create your views here.
@@ -24,6 +29,8 @@ def index(request):
     # Pass the filtered events to the template
     return render(request, 'parent_resource_app/index.html', {'future_events': future_events})
 
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['organization_role'])
 def createEvent(request, organization_id):
    form = EventForm()
    organization = Organization.objects.get(pk=organization_id)
@@ -51,7 +58,8 @@ def createEvent(request, organization_id):
    return render( request, 'parent_resource_app/event_form.html', context )
    
 
-
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['organization_role'])
 def updateEvent(request, organization_id, event_id):
    event = get_object_or_404(Event, pk=event_id)
    organization = event.organization
@@ -77,7 +85,8 @@ def updateEvent(request, organization_id, event_id):
    return render(request, 'parent_resource_app/update_event.html', context)
 
 
-
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['organization_role'])
 def deleteEvent(request, organization_id, event_id):
    event = get_object_or_404(Event, pk=event_id)
     
@@ -93,7 +102,8 @@ def deleteEvent(request, organization_id, event_id):
    return render(request, 'parent_resource_app/delete_event.html', context)
 
 
-
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['organization_role'])
 def updateOrganization(request, organization_id):
    organization = get_object_or_404(Organization, pk=organization_id)
    
@@ -118,6 +128,7 @@ def updateOrganization(request, organization_id):
    return render(request, 'parent_resource_app/update_organization.html', context)
 
 
+
 def registerPage(request):
    form = CreateUserForm()
 
@@ -136,6 +147,27 @@ def registerPage(request):
       
    context = {'form': form}
    return render(request, 'registration/register.html', context)
+
+
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['organization'])
+def userPage(request):
+   organization = request.user.student
+   form = OrganizationForm(instance = organization)
+   print('organization', organization)
+   event = organization.event
+   print(event)
+   if request.method == 'POST':
+      form = OrganizationForm(request.POST, request.FILES, instance=organization)
+      if form.is_vaild():
+         form.save()
+   context = {'event':event, 'form':form}
+   return render(request, 'parent_resource_app/user.html', context)
+
+##@login_required(login_url='login')
+#@allowed_users(allowed_roles=['organization_role'])
+#def createOrganization
+
 
 
 class OrganizationListView(generic.ListView):

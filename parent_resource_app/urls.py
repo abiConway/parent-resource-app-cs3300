@@ -22,4 +22,5 @@ urlpatterns = [
 
     path('accounts/register', views.registerPage, name = 'register-page'),
 
+    path('user/', views.userPage, name='user_page'),
 ]

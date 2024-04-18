@@ -8,11 +8,11 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Organization(models.Model):
-    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     
     name = models.CharField(max_length=200)
-    email = models.EmailField("Email", max_length=200, unique=True)
+    email = models.EmailField("Email", max_length=200)
     phone = models.CharField(max_length= 20, null=True)
     about = models.TextField(max_length=200)
 

@@ -9,7 +9,7 @@ class EventForm(ModelForm):
     class Meta:
         model = Event
         fields ='__all__'
-        exclude =['user']
+        exclude =['organization']
        #widgets = {
         #    'start_date': forms.DateTimeInput(attrs={'placeholder': 'YYYY-MM-DD HH:MM:SS'}),
         #}
@@ -17,7 +17,8 @@ class EventForm(ModelForm):
 class OrganizationForm(ModelForm):
     class Meta:
         model = Organization
-        fields =('name', 'email', 'phone', 'about')
+        fields ='__all__'
+        exclude =['user']
 
 
 start_date = forms.DateField(
