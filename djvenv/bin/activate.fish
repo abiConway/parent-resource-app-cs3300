@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/abigailconway/cs3300-2/personal_project/djvenv"
+set -gx VIRTUAL_ENV "/Users/abigailconway/cs3300-2/parent-resource-app-cs3300/djvenv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

@@ -1,0 +1,17 @@
+{% extends 'parent_resource_app/base_template.html' %}
+
+{% block content%}
+
+    <h1>Create Your Group's Profile</h1>
+    <form action="" method="POST">
+
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        
+        <input class="button" type="submit" name="Submit">
+
+</form>
+
+{% end block %}

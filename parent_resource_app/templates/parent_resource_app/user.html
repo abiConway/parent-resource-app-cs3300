@@ -1,15 +1,10 @@
 {% extends 'parent_resource_app/base_template.html' %}
 
 {% block content%}
-<form action="" method="POST">
-
-    {% csrf_token %}
-    <table>
-        {{ form.as_table }}
-    </table>
-    <input class="button" type="submit" name="Submit">
-
-</form>
-    
+<h3>Group Profile</h3>
+Welcome, {{ user.username }}! <br><br>
+<p>Name: {{ user.organization.name }}</p>
+<a class="button" href="{{ user.organization.get_absolute_url }}">View Group Profile</a>
+<a class="button" href="{% url 'updateOrganization' user.organization.id %}">Edit Group Profile</a>
 
 {% endblock %}

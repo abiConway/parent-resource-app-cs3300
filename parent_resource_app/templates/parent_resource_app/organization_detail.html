@@ -14,8 +14,8 @@
            {% for event in organization.event_set.all %}
               <li class="a"><a class="textlink" href="{{ event.get_absolute_url }}" >{{ event.title }}</a><br><br>
               {{event.description}}  <br><br>
-              <a aria-current="page" href="{% url 'updateEvent' group.id event.id %}" ><button class="edit_button">Edit</button></a>
-              <a aria-current="page" href="{% url 'deleteEvent' group.id event.id %}"><button class="edit_button">Delete</button></a> 
+              <a aria-current="page" href="{% url 'updateEvent' organization.id event.id %}" ><button class="edit_button">Edit</button></a>
+              <a aria-current="page" href="{% url 'deleteEvent' organization.id event.id %}"><button class="edit_button">Delete</button></a> 
             </li><br>
            {% endfor %}
         </ul>

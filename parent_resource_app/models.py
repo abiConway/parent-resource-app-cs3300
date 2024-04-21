@@ -3,6 +3,8 @@ from django.urls import reverse
 from multiselectfield import MultiSelectField
 from django.contrib.auth.models import User
 #from django.forms import *
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 # Create your models here.
@@ -15,6 +17,16 @@ class Organization(models.Model):
     email = models.EmailField("Email", max_length=200)
     phone = models.CharField(max_length= 20, null=True)
     about = models.TextField(max_length=200)
+
+    #@receiver(post_save, sender=User)
+    #def create_user_organization(sender, instance, created, **kwargs):
+    #    if created:
+        #   Organization.objects.create(user=instance)
+
+    #@receiver(post_save, sender=User)
+    #def save_user_organization(sender, instance, **kwargs):
+        # print("save",sender, instance,**kwargs)
+        #instance.organization.save()
 
     #Define default String to return the name for representing the Model object."
     def __str__(self):

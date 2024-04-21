@@ -11,11 +11,17 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .decorators import allowed_users
+from django.utils.translation import gettext as _
 
 
 
 
 # Create your views here.
+
+def base_template(request):
+   context = { 'redirect_to': request.path }
+   return render(request, 'parent_resource_app/base.html', context)
+
 
 def index(request):
     #I got help from Chat GPT on this querey
@@ -28,6 +34,18 @@ def index(request):
 
     # Pass the filtered events to the template
     return render(request, 'parent_resource_app/index.html', {'future_events': future_events})
+
+
+def login(request):
+
+    # Pass the filtered events to the template
+    return render(request, 'registration/login.html')
+
+
+
+def logout(request):
+    # Pass the filtered events to the template
+    return render(request, 'registration/logout.html')
 
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['organization_role'])
@@ -149,24 +167,21 @@ def registerPage(request):
    return render(request, 'registration/register.html', context)
 
 
+
+
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['organization'])
 def userPage(request):
-   organization = request.user.student
+   organization = request.user.organization
    form = OrganizationForm(instance = organization)
    print('organization', organization)
-   event = organization.event
-   print(event)
    if request.method == 'POST':
       form = OrganizationForm(request.POST, request.FILES, instance=organization)
       if form.is_vaild():
          form.save()
-   context = {'event':event, 'form':form}
+   context = {'organization': organization, 'form':form}
    return render(request, 'parent_resource_app/user.html', context)
 
-##@login_required(login_url='login')
-#@allowed_users(allowed_roles=['organization_role'])
-#def createOrganization
 
 
 

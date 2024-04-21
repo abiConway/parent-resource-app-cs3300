@@ -114,8 +114,21 @@
               <a class="nav-link active" aria-current="page" href="{% url 'organizations' %}">GROUPS</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'login' %}">LOGIN</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'login-page' %}">LOGIN</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'logout-page' %}">LOGOUT</a>
+            </li>
+            <li class="nav-item">
+              <form action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+                <input name="next" type="hidden" value="{{ redirect_to }}" />
+                <select name="language">
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                </select>
+                <input type="submit" value="Change Language">
+            </form>
           </ul>
         </div>
         

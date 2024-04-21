@@ -9,11 +9,11 @@
     <ul class="list-group">
         {% for event in future_events %}
             <li class="a">
-                <h2 class="normal">{{ event.title }} </h2><br> 
+                <h2 class="normal">_({{ event.title }} )</h2><br> 
                 <p>
-                    {{ event.description }} <br>Ages: {{ event.age_group }}
+                    _({{ event.description }} <br>Ages: {{ event.age_group }}
                     <br> {{ event.start_date|date:"M d" }} - {{ event.end_date|date:"M d" }} 
-                    <br>From: {{ event.group.name }} 
+                    <br>From: {{ event.group.name }} )
                     <br>
                 </p>
             
