@@ -11,7 +11,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .decorators import allowed_users
-from django.utils.translation import gettext as _
+from tkinter import * 
 
 
 

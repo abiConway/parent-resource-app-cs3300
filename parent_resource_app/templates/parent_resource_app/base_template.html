@@ -1,6 +1,6 @@
 {% load static %}
 {% load django_bootstrap5 %}
- 
+{% load i18n %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,6 +8,7 @@
   {% bootstrap_css %}
   {% bootstrap_messages %}
   {% bootstrap_javascript %}
+
 
   <title>Parent Resouces</title>
   <meta charset="utf-8">
@@ -99,7 +100,23 @@
 
 
  <body>
-   
+
+  {% get_current_language as CURRENT_LANGUAGE %}
+  {% get_available_languages as AVAILABLE_LANGUAGES %}
+  {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
+  <div class="languages">
+    <p>{% trans "Language" %}:</p>
+    <ul class="languages">
+      {% for language in languages %}
+        <li>
+          <a href="/{{ language.code }}/"
+            {% if language.code == CURRENT_LANGUAGE %} class="active"{% endif %}>
+            {{ language.name_local }}
+          </a>
+        </li>
+
+
+
      <!-- Navbar-->
       <nav class="navbar navbar-expand">
         <a class="nav-link active" aria-current="page" href="{% url 'index' %}"><img src="{% static 'images/colorado_logo.png' %}" style="width:225px; height:100px;"></a>
@@ -108,27 +125,17 @@
           <ul class="nav nav-tabs navbar-bottom">
             
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'index' %}">HOME</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'index' %}">_(HOME)</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'organizations' %}">GROUPS</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'organizations' %}">_(GROUPS)</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'login-page' %}">LOGIN</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'login-page' %}">_(LOGIN)</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'logout-page' %}">LOGOUT</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'logout-page' %}">_(LOGOUT)</a>
             </li>
-            <li class="nav-item">
-              <form action="{% url 'set_language' %}" method="post">
-                {% csrf_token %}
-                <input name="next" type="hidden" value="{{ redirect_to }}" />
-                <select name="language">
-                    <option value="en">English</option>
-                    <option value="es">Español</option>
-                </select>
-                <input type="submit" value="Change Language">
-            </form>
           </ul>
         </div>
         

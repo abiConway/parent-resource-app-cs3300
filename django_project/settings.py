@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 import os
 from pathlib import Path
+from django.utils.translation import gettext_lazy as _
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,6 +44,9 @@ INSTALLED_APPS = [
     'parent_resource_app',
     'django_bootstrap5',
     'multiselectfield',
+    'course.apps.CourseConfig',
+    'rosetta',
+    'parler',
 ]
 
 # Add support for authenticating users
@@ -121,6 +127,8 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
+USE_L10N = True
+
 USE_TZ = True
 
 LANGUAGES = [
@@ -130,6 +138,17 @@ LANGUAGES = [
 
 LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
 
+
+PARLER_LANGUAGES = {
+    None: (
+        {'code': 'en',}, # English
+        {'code': 'es',}, # Spanish
+    ),
+    'default': {
+        'fallbacks': ['en'],
+        'hide_untranslated': False,
+    }
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/

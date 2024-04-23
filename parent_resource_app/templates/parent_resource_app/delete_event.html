@@ -2,11 +2,11 @@
 
 {% block content%}
 
-<p>Are you sure you want to delete "{{ event.title }}"?</p>
+<p>_(Are you sure you want to delete?){{ event.title }}"?</p>
     <form method="post">
         {% csrf_token %}
-        <button class="button" type="submit">Confirm Delete</button>
-        <a href="{% url 'organization-detail' event.organization_id %}"><button class="button">Cancel</button></a>
+        <button class="button" type="submit">_(Confirm Delete)</button>
+        <a href="{% url 'organization-detail' event.organization_id %}"><button class="button">_(Cancel)</button></a>
     </form>
     
 {%endblock%} 

@@ -2,6 +2,7 @@ from django.urls import path, include
 from . import views
 
 
+
 urlpatterns = [
 #path function defines a url pattern
 #'' is empty to represent based path to app
@@ -26,8 +27,5 @@ urlpatterns = [
     path('accounts/login', views.login, name='login-page'),
     path('accounts/logout', views.logout, name='logout-page'),
     path('user/', views.userPage, name='user_page'),
-
-    #translation
-    path('i18n/', include('django.conf.urls.i18n')),
 
 ]
