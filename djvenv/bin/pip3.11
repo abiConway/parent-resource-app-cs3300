@@ -1,4 +1,4 @@
-#!/Users/abigailconway/cs3300-2/personal_project/djvenv/bin/python3.11
+#!/Users/abigailconway/cs3300-2/parent-resource-app-cs3300/djvenv/bin/python3.11
 # -*- coding: utf-8 -*-
 import re
 import sys
