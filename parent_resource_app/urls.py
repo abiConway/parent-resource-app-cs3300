@@ -27,7 +27,7 @@ urlpatterns = [
     path('accounts/logout', views.logout, name='logout-page'),
     path('user/', views.userPage, name='user_page'),
 
-    #translation
-    path('i18n/', include('django.conf.urls.i18n')),
+
+    
 
 ]

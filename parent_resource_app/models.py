@@ -5,19 +5,28 @@ from django.contrib.auth.models import User
 #from django.forms import *
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.utils.translation import gettext as _
+ 
+import uuid
 
 
+from parler.models import TranslatableModel, TranslatedFields
 # Create your models here.
 
-class Organization(models.Model):
+class Organization(TranslatableModel):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-
     
-    name = models.CharField(max_length=200)
-    email = models.EmailField("Email", max_length=200)
-    phone = models.CharField(max_length= 20, null=True)
-    about = models.TextField(max_length=200)
 
+    #This wrapper provided by django-parler allows you to translate model fields
+    #another translated model object will be created for each object
+    #BE AWARE! adding this wrapper will delete all previous records in the database
+    translations = TranslatedFields(
+        
+        name = models.CharField(_('Name'), max_length=200),
+        email = models.EmailField(_('Email'), max_length=200),
+        phone = models.CharField(_('Phone'), max_length= 20, null=True),
+        about = models.TextField(_('about'), max_length=200),
+    )
     #@receiver(post_save, sender=User)
     #def create_user_organization(sender, instance, created, **kwargs):
     #    if created:
@@ -40,45 +49,46 @@ class Organization(models.Model):
 
 
 
-class Event(models.Model):
+class Event(TranslatableModel):
     #List of choices for major value in database, human readable name
     SERVICES = (
-    ('Family Fun', 'Family Fun'),  
-    ('Health and Well-being', 'Health and Well-being'),
-    ('Benefits or Financial Aid', 'Benefits or Financial Aid'),
+    ('Family Fun', _('Family Fun')),  
+    ('Health and Well-being', _('Health and Well-being')),
+    ('Benefits or Financial Aid', _('Benefits or Financial Aid')),
     )
 
-
+    #The left must include text value, not just number
     AGEGROUP = (
-        ('0y', '0-1 years'),
-        ('1y', '1-2 years'),
-        ('2y', '2-3 years'),
-        ('3y', '3-4 years'),
-        ('4y', '4-5 years'),
-        ('5y', '5-6 years'),
-        ('6y', '6-7 years'),
-        ('7y', '7-8 years'),
-        ('8y', '8-9 years'),
-        ('9y', '9-10 years'),
-        ('10y', '10-11 years'),
-        ('11y', '11-12 years'),
-        ('12y', '12-13 year'),
-        ('13+', '13 or older'),
-        ('P', 'For Parents'),
-        ('All', 'All ages'),
+        ('0y', _('0-1 years')),
+        ('1y', _('1-2 years')),
+        ('2y', _('2-3 years')),
+        ('3y', _('3-4 years')),
+        ('4y', _('4-5 years')),
+        ('5y', _('5-6 years')),
+        ('6y', _('6-7 years')),
+        ('7y', _('7-8 years')),
+        ('8y', _('8-9 years')),
+        ('9y', _('9-10 years')),
+        ('10y', _('10-11 years')),
+        ('11y', _('11-12 years')),
+        ('12y', _('12-13 year')),
+        ('13+', _('13 or older')),
+        ('P', _('For Parents')),
+        ('All', _('All ages')),
     )
 
-    title = models.CharField(max_length=200)
-    service_type = models.CharField("Type of Event", max_length=200, choices=SERVICES)
-    price = models.DecimalField(max_digits=5, decimal_places=2)
-    description = models.TextField(max_length=200)
-    age_group = MultiSelectField(choices=AGEGROUP, max_length=25)
-    start_date = models.DateField("Start Date", auto_now=False, auto_now_add=False, null=True, blank=True)
-    end_date = models.DateField("End Date", auto_now=False, auto_now_add=False, null=True, blank=True)
-    location = models.CharField("Location", max_length=200, null = True, blank=True)
-
+    translations = TranslatedFields(
+        title = models.CharField(_('Title'), max_length=200),
+        service_type = models.CharField(_("Type of Event"), max_length=200, choices=SERVICES),
+        price = models.DecimalField(_('Price'), max_digits=5, decimal_places=2),
+        description = models.TextField(_('Description'), max_length=200),
+        age_group = MultiSelectField(_('Age Group'), choices=AGEGROUP, max_length=25),
+        start_date = models.DateField(_("Start Date"), auto_now=False, auto_now_add=False, null=True, blank=True),
+        end_date = models.DateField(_("End Date"), auto_now=False, auto_now_add=False, null=True, blank=True),
+        location = models.CharField(_("Location"), max_length=200, null = True, blank=True),
+    )
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE, default=None)
-
+    
 
     #Define default String to return the name for representing the Model object."
     def __str__(self):

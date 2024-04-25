@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 import os
 from pathlib import Path
+#this gettext_lazy is used to translate language names (should almost always use over gettext)
+from django.utils.translation import gettext_lazy as _
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,6 +44,8 @@ INSTALLED_APPS = [
     'parent_resource_app',
     'django_bootstrap5',
     'multiselectfield',
+    'rosetta', 
+    'parler',
 ]
 
 # Add support for authenticating users
@@ -52,12 +57,13 @@ AUTHENTICATION_BACKENDS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware', #needed for translation, uses session data - order is important! After session and before and after common middleware
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
+    
 
 ]
 
@@ -115,18 +121,36 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
 
+# enables django's translation system
 USE_I18N = True
 
+#numbers and dates are formatted according to the current locale
+USE_L10N = True
+
+#datetimes are timezone-aware by default
 USE_TZ = True
 
 LANGUAGES = [
     ('en', 'English'),
     ('es', 'Spanish'),
 ]
+
+#Code to translate instances of user entered models (aka the group and event details)
+
+PARLER_LANGUAGES = {
+    None: (
+        {'code': 'en'},
+        {'code': 'es'},
+    ),
+    'default': {
+        'fallback': ['en'],
+        'hide_untranslated': False,
+    }
+}
 
 LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
 

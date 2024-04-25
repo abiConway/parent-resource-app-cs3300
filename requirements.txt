@@ -1,5 +1,14 @@
 asgiref==3.8.1
+certifi==2024.2.2
+chardet==5.2.0
+charset-normalizer==3.3.2
 Django==4.2
 django-bootstrap5==23.4
 django-multiselectfield==0.1.12
+django-parler==2.3
+django-rosetta==0.10.0
+idna==3.7
+polib==1.2.0
+requests==2.31.0
 sqlparse==0.4.4
+urllib3==2.2.1
