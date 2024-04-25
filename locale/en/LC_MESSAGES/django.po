@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-25 00:38-0600\n"
-"PO-Revision-Date: 2024-04-25 00:55-0600\n"
+"POT-Creation-Date: 2024-04-25 05:35-0600\n"
+"PO-Revision-Date: 2024-04-25 05:16-0600\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -18,6 +18,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.4.2\n"
+
+#: django_project/urls.py:23
+msgid "admin/"
+msgstr ""
 
 #: djvenv/lib/python3.11/site-packages/django/contrib/messages/apps.py:15
 msgid "Messages"
@@ -1242,110 +1246,134 @@ msgstr ""
 msgid "Phone"
 msgstr ""
 
-#: parent_resource_app/models.py:20
+#: parent_resource_app/models.py:25
 msgid "about"
 msgstr ""
 
-#: parent_resource_app/models.py:47
+#: parent_resource_app/models.py:52
 msgid "Family Fun"
 msgstr ""
 
-#: parent_resource_app/models.py:48
+#: parent_resource_app/models.py:53
 msgid "Health and Well-being"
 msgstr ""
 
-#: parent_resource_app/models.py:49
+#: parent_resource_app/models.py:54
 msgid "Benefits or Financial Aid"
 msgstr ""
 
-#: parent_resource_app/models.py:54
+#: parent_resource_app/models.py:59
 msgid "0-1 years"
 msgstr ""
 
-#: parent_resource_app/models.py:56
-msgid "2-3 years"
-msgstr ""
-
-#: parent_resource_app/models.py:57
-msgid "3-4 years"
-msgstr ""
-
-#: parent_resource_app/models.py:58
-msgid "4-5 years"
-msgstr ""
-
-#: parent_resource_app/models.py:59
-msgid "5-6 years"
-msgstr ""
-
 #: parent_resource_app/models.py:60
-msgid "6-7 years"
+msgid "1-2 years"
 msgstr ""
 
 #: parent_resource_app/models.py:61
-msgid "7-8 years"
+msgid "2-3 years"
 msgstr ""
 
 #: parent_resource_app/models.py:62
-msgid "8-9 years"
+msgid "3-4 years"
 msgstr ""
 
 #: parent_resource_app/models.py:63
-msgid "9-10 years"
+msgid "4-5 years"
 msgstr ""
 
 #: parent_resource_app/models.py:64
-msgid "10-11 years"
+msgid "5-6 years"
 msgstr ""
 
 #: parent_resource_app/models.py:65
-msgid "11-12 years"
+msgid "6-7 years"
 msgstr ""
 
 #: parent_resource_app/models.py:66
-msgid "12-13 year"
+msgid "7-8 years"
 msgstr ""
 
 #: parent_resource_app/models.py:67
-msgid "13 or older"
+msgid "8-9 years"
 msgstr ""
 
 #: parent_resource_app/models.py:68
-msgid "For Parents"
+msgid "9-10 years"
 msgstr ""
 
 #: parent_resource_app/models.py:69
-msgid "All ages"
+msgid "10-11 years"
+msgstr ""
+
+#: parent_resource_app/models.py:70
+msgid "11-12 years"
+msgstr ""
+
+#: parent_resource_app/models.py:71
+msgid "12-13 year"
 msgstr ""
 
 #: parent_resource_app/models.py:72
-msgid "Title"
+msgid "13 or older"
 msgstr ""
 
 #: parent_resource_app/models.py:73
-msgid "Type of Event"
+msgid "For Parents"
 msgstr ""
 
 #: parent_resource_app/models.py:74
-msgid "Price"
-msgstr ""
-
-#: parent_resource_app/models.py:75
-msgid "Description"
-msgstr ""
-
-#: parent_resource_app/models.py:76
-msgid "Age Group"
-msgstr ""
-
-#: parent_resource_app/models.py:77
-msgid "Start Date"
+msgid "All ages"
 msgstr ""
 
 #: parent_resource_app/models.py:78
-msgid "End Date"
+msgid "Title"
 msgstr ""
 
 #: parent_resource_app/models.py:79
+msgid "Type of Event"
+msgstr ""
+
+#: parent_resource_app/models.py:81
+msgid "Description"
+msgstr ""
+
+#: parent_resource_app/models.py:82
+msgid "Age Group"
+msgstr ""
+
+#: parent_resource_app/models.py:84
 msgid "Location"
+msgstr ""
+
+#: parent_resource_app/models.py:86
+msgid "Start Date"
+msgstr ""
+
+#: parent_resource_app/models.py:87
+msgid "End Date"
+msgstr ""
+
+#: parent_resource_app/models.py:88
+msgid "Price"
+msgstr ""
+
+#: parent_resource_app/templates/parent_resource_app/base_template.html:112
+msgid "HOME"
+msgstr ""
+
+#: parent_resource_app/templates/parent_resource_app/base_template.html:115
+msgid "GROUPS"
+msgstr ""
+
+#: parent_resource_app/templates/parent_resource_app/base_template.html:118
+msgid "LOGIN"
+msgstr ""
+
+#: parent_resource_app/templates/parent_resource_app/base_template.html:121
+msgid "LOGOUT"
+msgstr ""
+
+#: parent_resource_app/templates/parent_resource_app/base_template.html:128
+msgid "Language"
 msgstr ""

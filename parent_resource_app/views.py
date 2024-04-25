@@ -20,6 +20,7 @@ from django.utils.translation import gettext as _
 
 def base_template(request):
    context = { 'redirect_to': request.path }
+
    return render(request, 'parent_resource_app/base.html', context)
 
 
