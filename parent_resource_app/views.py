@@ -8,9 +8,10 @@ from .forms import *
 from django.contrib import messages
 from django.contrib.auth.models import Group
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .decorators import allowed_users
+from .decorators import allowed_users, user_is_owner
 from django.utils.translation import gettext as _
 
 
@@ -18,10 +19,6 @@ from django.utils.translation import gettext as _
 
 # Create your views here.
 
-def base_template(request):
-   context = { 'redirect_to': request.path }
-
-   return render(request, 'parent_resource_app/base.html', context)
 
 
 def index(request):
@@ -37,19 +34,14 @@ def index(request):
     return render(request, 'parent_resource_app/index.html', {'future_events': future_events})
 
 
-def login(request):
 
-    # Pass the filtered events to the template
-    return render(request, 'registration/login.html')
-
-
-
-def logout(request):
-    # Pass the filtered events to the template
-    return render(request, 'registration/logout.html')
+def logoutView(request):
+    logout(request)
+    return render(request, 'registration/logout_complete.html')
 
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['organization_role'])
+@user_is_owner()
 def createEvent(request, organization_id):
    form = EventForm()
    organization = Organization.objects.get(pk=organization_id)
@@ -79,6 +71,7 @@ def createEvent(request, organization_id):
 
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['organization_role'])
+@user_is_owner()
 def updateEvent(request, organization_id, event_id):
    event = get_object_or_404(Event, pk=event_id)
    organization = event.organization
@@ -106,6 +99,7 @@ def updateEvent(request, organization_id, event_id):
 
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['organization_role'])
+@user_is_owner()
 def deleteEvent(request, organization_id, event_id):
    event = get_object_or_404(Event, pk=event_id)
     
@@ -123,6 +117,7 @@ def deleteEvent(request, organization_id, event_id):
 
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['organization_role'])
+@user_is_owner()
 def updateOrganization(request, organization_id):
    organization = get_object_or_404(Organization, pk=organization_id)
    
@@ -167,13 +162,15 @@ def registerPage(request):
    context = {'form': form}
    return render(request, 'registration/register.html', context)
 
-
+ 
 
 
 @login_required(login_url='login')
-@allowed_users(allowed_roles=['organization'])
+@allowed_users(allowed_roles=['organization_role'])
+@user_is_owner()
 def userPage(request):
    organization = request.user.organization
+   events = Event.objects.filter(organization_id=organization.id)
    form = OrganizationForm(instance = organization)
    print('organization', organization)
    if request.method == 'POST':

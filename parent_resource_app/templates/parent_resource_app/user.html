@@ -1,10 +1,22 @@
 {% extends 'parent_resource_app/base_template.html' %}
 
 {% block content%}
-<h3>Group Profile</h3>
-Welcome, {{ user.username }}! <br><br>
-<p>Name: {{ user.organization.name }}</p>
-<a class="button" href="{{ user.organization.get_absolute_url }}">View Group Profile</a>
-<a class="button" href="{% url 'updateOrganization' user.organization.id %}">Edit Group Profile</a>
 
+<h2>Welcome, {{ user.username }}! </h2><br>
+
+
+<br><h3>My Profile</h3><br>
+<div class="card">
+    <p class="card-header">{{ user.organization.name }} </p>
+    <div class="card-body">
+        <p class='card-text'>Email: {{ user.email }}</p>
+        <p class='card-text'>Phone: {{ user.organization.phone }}</p>
+        <p class='card-text'>About: {{ user.organization.about }}</p>
+
+    </div>
+</div><br>
+    
+    
+<a href="{% url 'updateOrganization' user.organization.id %}"><button class="button">Edit Group Profile</button></a>
+<a href="{{ user.organization.get_absolute_url }}"><button class="button">View Public Page</button></a><br>
 {% endblock %}

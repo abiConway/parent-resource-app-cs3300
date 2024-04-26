@@ -1,27 +1,36 @@
 {% extends 'parent_resource_app/base_template.html' %}
 
-{% block content%}
+{% block content %}
+    {% if user.id == organization.user.id  %}
+        <a aria-current="page" href="{% url 'updateOrganization' organization.id %}"><button class="button">Edit Profile</button></a>
+        <a aria-current="page" href="{% url 'createEvent' organization.id %}"><button class="button">Create New Event</button></a> <br><br>
+    {% endif %}
 
-    <h1>{{ organization.name }}</h1><p><a aria-current="page" href="{% url 'updateOrganization' organization.id %}"><button class="button">Edit Group Info</button></a></p> <br><br>
-    <p class="detail"><strong>Email:</strong> {{organization.email}}</p>
-    <p class="detail"><strong>About:</strong><br> {{organization.about}}</p>
-    <h2><strong>Events:</strong></h2> <a aria-current="page" href="{% url 'createEvent' organization.id %}"><button class="button">Create New Event</button></a>
-    <br><br>
+    <div class="card">
+        <p class="card-header">{{ organization.name }} </p>
+        <div class="card-body">
+            <p class='card-text'>Email: {{ email }}</p>
+            <p class='card-text'>Phone: {{ organization.phone }}</p>
+            <p class='card-text'> {{ organization.about }}</p>
+        </div>
+    </div><br>
 
-    
+    <h2><strong>Events:</strong></h2>
+
     {% if organization.event_set.all %}
-        <ul>
-           {% for event in organization.event_set.all %}
-              <li class="a"><a class="textlink" href="{{ event.get_absolute_url }}" >{{ event.title }}</a><br><br>
-              {{event.description}}  <br><br>
-              <a aria-current="page" href="{% url 'updateEvent' organization.id event.id %}" ><button class="edit_button">Edit</button></a>
-              <a aria-current="page" href="{% url 'deleteEvent' organization.id event.id %}"><button class="edit_button">Delete</button></a> 
-            </li><br>
-           {% endfor %}
-        </ul>
+        <div class="card">
+            {% for event in organization.event_set.all %}
+                <div class="card-body">
+                    <p class="card-header"><a class="textlink" href="{{ event.get_absolute_url }}">{{ event.title }}</a></p>
+                    <p class="card-text">{{ event.description }}</p>
+                    {% if user.id == organization.user.id%}
+                        <a aria-current="page" href="{% url 'updateEvent' organization.id event.id %}" ><button class="edit_button">Edit</button></a>
+                        <a aria-current="page" href="{% url 'deleteEvent' organization.id event.id %}"><button class="edit_button">Delete</button></a> 
+                    {% endif %}
+                </div><br>
+            {% endfor %}
+        </div>
     {% else %}
         <p>There are no events from this group.</p>
     {% endif %}
-       
-
 {% endblock %}

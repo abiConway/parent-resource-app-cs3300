@@ -114,11 +114,13 @@
               <a class="nav-link active" aria-current="page" href="{% url 'organizations' %}">{% translate "GROUPS" %}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'login-page' %}">{% translate "LOGIN" %}</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'login' %}">{% translate "LOGIN" %}</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'logout-page' %}">{% translate "LOGOUT" %}</a>
-            </li>
+            {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'logout' %}">{% translate "LOGOUT" %}</a>
+              </li>
+            {% endif %}
             <li class="nav-item">
               {% get_current_language as CURRENT_LANGUAGE %}
               {% get_available_languages as AVAILABLE_LANGUAGES %}

@@ -10,7 +10,9 @@
     <p class="detail"><strong>When: </strong> {{ event.start_date|date:"M d" }} - {{ event.end_date|date:"M d" }}</p>
 
     <p>
-        <a aria-current="page" href="{% url 'updateEvent' event.organization.id event.id %}" ><button class="edit_button">Edit</button></a>
-        <a aria-current="page" href="{% url 'deleteEvent' event.organization.id event.id %}"><button class="edit_button">Delete</button></a> 
+        {% if user.id == event.organization.user.id %}
+            <a aria-current="page" href="{% url 'updateEvent' event.organization.id event.id %}" ><button class="edit_button">Edit</button></a>
+            <a aria-current="page" href="{% url 'deleteEvent' event.organization.id event.id %}"><button class="edit_button">Delete</button></a> 
+        {% endif %}
     </p>
 {% endblock %}

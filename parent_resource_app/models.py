@@ -2,22 +2,24 @@ from django.db import models
 from django.urls import reverse
 from multiselectfield import MultiSelectField
 from django.contrib.auth.models import User
-#from django.forms import *
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.translation import gettext as _
+
  
 
 # Create your models here.
 
+
+#HAD TO CHANGE FROM "GROUP" to "ORGANIZATION" BECAUSE OF CONFLICT WITH DJANGO AUTH GROUP 
 class Organization(models.Model):
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    about = models.TextField(_('about'), max_length=200)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)    
 
     name = models.CharField(_('Name'), max_length=200)
     email = models.EmailField(_('Email'), max_length=200)
     phone = models.CharField(_('Phone'), max_length= 20, null=True)
+    about = models.TextField(_('about'), max_length=200)
     #@receiver(post_save, sender=User)
     #def create_user_organization(sender, instance, created, **kwargs):
     #    if created:
@@ -71,16 +73,13 @@ class Event(models.Model):
  
     title = models.CharField(_('Title'), max_length=200)
     service_type = models.CharField(_("Type of Event"), max_length=200, choices=SERVICES)
-
-    description = models.TextField(_('Description'), max_length=200)
+    price = models.DecimalField(_('Price'), max_digits=5, decimal_places=2)
     age_group = MultiSelectField(_('Age Group'), choices=AGEGROUP, max_length=25)
-
+    description = models.TextField(_('Description'), max_length=200)
     location = models.CharField(_('Location'), max_length=200, null = True, blank=True)
-
     start_date = models.DateField(_('Start Date'), auto_now=False, auto_now_add=False, null=True, blank=True)
     end_date = models.DateField(_('End Date'), auto_now=False, auto_now_add=False, null=True, blank=True)
-    price = models.DecimalField(_('Price'), max_digits=5, decimal_places=2)
-
+    
     
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE, default=None)
 

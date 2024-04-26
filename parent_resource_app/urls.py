@@ -2,6 +2,7 @@ from django.urls import path, include
 from . import views
 
 
+
 urlpatterns = [
 #path function defines a url pattern
 #'' is empty to represent based path to app
@@ -16,17 +17,15 @@ urlpatterns = [
     path('group/<int:organization_id>/updateEvent/<int:event_id>', views.updateEvent, name='updateEvent'),
     path('group/<int:organization_id>/deleteEvent/<int:event_id>', views.deleteEvent, name='deleteEvent'),
     path('group/<int:organization_id>/updateGroup', views.updateOrganization, name='updateOrganization'),
-    #path('group/createGroup', views.createOrganization, name='createOrganization'),
-
 
     #user accounts
     path('accounts/', include('django.contrib.auth.urls')),
-
     path('accounts/register', views.registerPage, name = 'register-page'),
-    path('accounts/login', views.login, name='login-page'),
-    path('accounts/logout', views.logout, name='logout-page'),
+    path('accounts/logout', views.logoutView, name='logout'),
     path('user/', views.userPage, name='user_page'),
 
+
+    #translation
     path('i18n/', include('django.conf.urls.i18n')),
     
 
