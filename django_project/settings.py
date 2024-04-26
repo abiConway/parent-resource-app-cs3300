@@ -45,8 +45,8 @@ INSTALLED_APPS = [
     'django_bootstrap5',
     'multiselectfield',
     'rosetta', 
-    'parler',
-]
+    'modeltranslation', 
+    ]
 
 # Add support for authenticating users
 AUTHENTICATION_BACKENDS = [

@@ -8,34 +8,25 @@ from django.dispatch import receiver
 from django.utils.translation import gettext as _
  
 
-
-from parler.models import TranslatableModel, TranslatedFields
 # Create your models here.
 
-class Organization(TranslatableModel):
+class Organization(models.Model):
 
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    about = models.TextField(_('about'), max_length=200)
 
-    #This wrapper provided by django-parler allows you to translate model fields
-    #another translated model object will be created for each object
-    #BE AWARE! adding this wrapper will delete all previous records in the database
-    translations = TranslatedFields(
-        user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True),
-        about = models.TextField(_('about'), max_length=200),
-    
-        name = models.CharField(_('Name'), max_length=200),
-        email = models.EmailField(_('Email'), max_length=200),
-        phone = models.CharField(_('Phone'), max_length= 20, null=True),
-
-    )
+    name = models.CharField(_('Name'), max_length=200)
+    email = models.EmailField(_('Email'), max_length=200)
+    phone = models.CharField(_('Phone'), max_length= 20, null=True)
     #@receiver(post_save, sender=User)
     #def create_user_organization(sender, instance, created, **kwargs):
     #    if created:
-        #   Organization.objects.create(user=instance)
+    #   Organization.objects.create(user=instance)
 
     #@receiver(post_save, sender=User)
     #def save_user_organization(sender, instance, **kwargs):
-        # print("save",sender, instance,**kwargs)
-        #instance.organization.save()
+    # print("save",sender, instance,**kwargs)
+    #instance.organization.save()
 
     #Define default String to return the name for representing the Model object."
     def __str__(self):
@@ -49,7 +40,7 @@ class Organization(TranslatableModel):
 
 
 
-class Event(TranslatableModel):
+class Event(models.Model):
     #List of choices for major value in database, human readable name
     SERVICES = (
     ('Family Fun', _('Family Fun')),  
@@ -77,20 +68,22 @@ class Event(TranslatableModel):
         ('All', _('All ages')),
     )
 
-    translations = TranslatedFields(
-        title = models.CharField(_('Title'), max_length=200),
-        service_type = models.CharField(_("Type of Event"), max_length=200, choices=SERVICES),
+ 
+    title = models.CharField(_('Title'), max_length=200)
+    service_type = models.CharField(_("Type of Event"), max_length=200, choices=SERVICES)
 
-        description = models.TextField(_('Description'), max_length=200),
-        age_group = MultiSelectField(_('Age Group'), choices=AGEGROUP, max_length=25),
+    description = models.TextField(_('Description'), max_length=200)
+    age_group = MultiSelectField(_('Age Group'), choices=AGEGROUP, max_length=25)
 
-        location = models.CharField(_('Location'), max_length=200, null = True, blank=True),
+    location = models.CharField(_('Location'), max_length=200, null = True, blank=True)
+
+    start_date = models.DateField(_('Start Date'), auto_now=False, auto_now_add=False, null=True, blank=True)
+    end_date = models.DateField(_('End Date'), auto_now=False, auto_now_add=False, null=True, blank=True)
+    price = models.DecimalField(_('Price'), max_digits=5, decimal_places=2)
+
     
-        start_date = models.DateField(_('Start Date'), auto_now=False, auto_now_add=False, null=True, blank=True),
-        end_date = models.DateField(_('End Date'), auto_now=False, auto_now_add=False, null=True, blank=True),
-        price = models.DecimalField(_('Price'), max_digits=5, decimal_places=2),
-        organization = models.ForeignKey(Organization, on_delete=models.CASCADE, default=None),
-    )
+    organization = models.ForeignKey(Organization, on_delete=models.CASCADE, default=None)
+
 
     #Define default String to return the name for representing the Model object."
     def __str__(self):
