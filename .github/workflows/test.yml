@@ -26,5 +26,5 @@ jobs:
       - name: Run Django test
         run: |
           cd parent_resource_app
-          coverage run manage.py test
+          coverage run ../manage.py test
           coverage report -m
