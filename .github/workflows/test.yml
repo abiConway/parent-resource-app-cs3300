@@ -5,7 +5,7 @@ on:
     branches: [main, sprint02, noTranslationBugs]
 
 jobs:
-  test-django-app:
+  test-django-app: 
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
