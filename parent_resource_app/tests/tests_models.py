@@ -46,3 +46,7 @@ class ModelTestCase(TestCase):
         self.assertEqual(self.event.organization, self.organization)
         self.assertEqual(str(self.event), self.event.title)
         self.assertEqual(self.event.get_absolute_url(), '/en/events/1/')
+ 
+
+
+ 

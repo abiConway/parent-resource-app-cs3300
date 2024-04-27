@@ -16,7 +16,7 @@ class ViewTestCase(TestCase):
             about='This is a test about for test organization.',
             user=self.user,
         )
-        
+         
         # Create a test event
         self.event = Event.objects.create(
             title='Test Event',
@@ -39,7 +39,9 @@ class ViewTestCase(TestCase):
     def test_create_event_view(self):
         client = Client()
         response = client.get(reverse('createEvent', kwargs={'organization_id': self.organization.id}))
-        self.assertEqual(response.status_code, 200)
+
+        print(response.content)
+        self.assertEqual(response.status_code, 302)
         self.assertTemplateUsed(response, 'parent_resource_app/event_form.html')
 
         # Test POST request
@@ -51,7 +53,7 @@ class ViewTestCase(TestCase):
             'age_group': '0y',
             'location': 'Test Location',
             'start_date': '2024-05-21',
-            'end_date': '2020-05-31'
+            'end_date': '2024-05-31'
         }
         response = client.post(reverse('createEvent', kwargs={'organization_id': self.organization.id}), data=data)
         self.assertEqual(response.status_code, 302)

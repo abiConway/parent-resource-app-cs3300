@@ -13,4 +13,4 @@ class EventFormTestCase(TestCase):
     def test_missing_title_invalid(self):
         data = {'title': '', 'description': 'This is a test description for test event.', 'service_type': 'Family Fun', 'price': '25.00', 'age_group': '0y', 'location': 'Test Location', 'start_date': '2024-05-21', 'end_date': '2020-05-31'}
         form = EventForm(data=data)
-        self.assertFalse(form.is_valid() and self.assertIn('title', form.errors))
+        self.assertFalse(form.is_valid() and self.assertIn('title', form.errors)) 
