@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'multiselectfield',
     'rosetta', 
     'modeltranslation', 
+    'selenium',
     ]
 
 # Add support for authenticating users
@@ -57,7 +58,8 @@ AUTHENTICATION_BACKENDS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.locale.LocaleMiddleware', #needed for translation, uses session data - order is important! After session and before and after common middleware
+    'django.middleware.locale.LocaleMiddleware', #needed for translation, uses session data - 
+        #order is important! After session and before and after common middleware
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -152,7 +154,7 @@ PARLER_LANGUAGES = {
     }
 }
 
-LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
+LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale'),]
 
 
 # Static files (CSS, JavaScript, Images)

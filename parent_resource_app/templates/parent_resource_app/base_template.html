@@ -1,159 +1,197 @@
 {% load static %}
 {% load django_bootstrap5 %}
 
-
 <!DOCTYPE html>
 <html lang="en">
- <head>
-  {% bootstrap_css %}
-  {% bootstrap_messages %}
-  {% bootstrap_javascript %}
-  {% load i18n %}
-  <title>Parent Resouces</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- <link rel="stylesheet" href="static/css/basics.css"> -->
-  <style>
-    h1{
-      padding-left: 10px;
-      font-weight: bold;
-    }
-    h2{
-      padding-left:10px;
-    }
-    .normal
-    {
-      padding-left:0;
-    }
-    
-    .detail{
-      padding-left:10px;
-    }
+<head>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% load i18n %}
+    <title>Parent Resources</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
-   .list-group{
-      padding-left: 10px;
-   }
 
-    .a{
-      list-style: none;
-      padding:10px;
-      border:solid;
-      border-radius: 5px;
-      background-color: #dae1d7;
-      color: black;
 
-    }
+    <style>
+      h1{
+        padding-left: 7px;
+        font-weight: bold;
+      }
 
-    .button{
-      float: left;
-      font-weight: 500;
-      background-color: lightgray;
-      color: black;
-      border-radius: 10px;
-      margin-left:10px;
-    }  
 
-    .edit_button{
-      font-weight: 500;
-      background-color: #898197;
-      color: black;
-      border-radius: 10px;
-     
+      h3{
+        color: white;
+      }
+      .normal
+      {
+        padding-left:0;
+      }
       
-    }  
-
-    .form{
-      margin-left = 10px;
-      border-radius: 10px;
-
-    }
-    body{
-      background-color: #b4aebe;
-      color: black;
-    }
-
-    .textlink{
-      color: black;
-      text-decoration: none;
-      font-size: 30px;
-    }
-
-    nav {
+      .detail{
+        padding-left:10px;
+      }
+  
+     .list-group{
+        padding-left: 10px;
+     }
+     
+     .card-header{
+        font-weight: bold;
+        font-size: 30px;
+        color: white;
+        background-color: black;
+        padding-bottom: 0px;
+     }
+     .card{
       color: white;
-      font-weight: bold;
-      background-color: #898197;
+      margin-left: 10px;
+      margin-bottom: 40px; 
+      background-color: black;
+      border-weight: 0px;
+      }
   
-    }
-
-    .nav-tabs .nav-item .nav-link.active {
-      color: black;
-      border-bottom: 4px solid #b4aebe;
+      .a{
+        list-style: none;
+        padding:10px;
+        padding-left: 20px;
+        background-color: black;
+        color: white;
+  
+      }
+  
  
-      bottom: 10px:
-    
-    }
-  
-  </style>
-   
- </head>
-
-
- <body>
-   
-     <!-- Navbar-->
-      <nav class="navbar navbar-expand">
-        <a class="nav-link active" aria-current="page" href="{% url 'index' %}"><img src="{% static 'images/colorado_logo.png' %}" style="width:225px; height:100px;"></a>
-        <div class="container-fluid">
-          
-          <ul class="nav nav-tabs navbar-bottom">
-            
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'index' %}">{% translate "HOME" %}</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'organizations' %}">{% translate "GROUPS" %}</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'login' %}">{% translate "LOGIN" %}</a>
-            </li>
-            {% if user.is_authenticated %}
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'logout' %}">{% translate "LOGOUT" %}</a>
-              </li>
-            {% endif %}
-            <li class="nav-item">
-              {% get_current_language as CURRENT_LANGUAGE %}
-              {% get_available_languages as AVAILABLE_LANGUAGES %}
-              {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
-              <div class="languages">
-                <p>{% trans "Language" %}:</p>
-                <ul class="languages">
-                  {% for language in languages %}
-                    <li>
-                      <a href="/{{ language.code }}/"
-                        {% if language.code == CURRENT_LANGUAGE %} class="active"{% endif %}>
-                        {{ language.name_local }}
-                      </a>
-                    </li>
-                  {% endfor %}
-            </li>
-                  
-        </ul>
-      </ul>
-        </div>
+      .edit_button, .button{
+        font-weight: 650;
+        background-color: #lightgrey;
+        color: black;
+        border-radius: 10px;
+        border-width: 4px;
+        margin-left:10px;
+        width: 180px;
+        height: 40px;
+       
         
-      </nav>
+      }  
+  
+      .form{
+        margin-left = 10px;
+        border-radius: 10px;
+  
+      }
+      body{
+        background-color: #292929;
+        color: white;
+      }
+  
+  
+  
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #898197;
+      }
+      
+      li {
+        float: left;
+      }
+
+
+      .d-grid{
+        margin-left: 7px;
+        color: white;
+        border-radius: 10px;
+      }
+
+
+      nav, li a, .dropbtn{
+        color: black;
+        font-weight: bold;
+        background-color: #898197;
+        display: inline-block;
+        text-align: left;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      
+      li a:hover, .dropdown:hover .dropbtn {
+        background-color: white;
+      }
+      
+      
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        color: black;
+        font-weight: bold;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 100;
+        position: fixed;
+      }
+      
+      
+      .dropdown-content a:hover {background-color: #f1f1f1;}
+      
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+    
+    </style>
+
+
+
+</head>
+
+<body>
+    <!-- Navbar-->
+    <nav class="navbar navbar-expand">
+        <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'images/colorado_logo.png' %}" style="width: 225px; height: 100px;"></a>
+        <div class="container-fluid">
+            <ul>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'index' %}">{% translate "HOME" %}</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'organizations' %}">{% translate "GROUPS" %}</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">{% translate "ACCOUNT" %}</a>
+                    <div class="dropdown-content">
+                        {% if user.is_authenticated %}
+                            <a class="dropdown-item" href="{% url 'user_page' %}">{% translate "PROFILE" %}</a>
+                            <a class="dropdown-item" href="{% url 'logout' %}">{% translate "LOGOUT" %}</a>
+                        {% else %}
+                            <a class="dropdown-item" href="{% url 'login' %}">{% translate "LOGIN" %}</a>
+                            <a class="dropdown-item" href="{% url 'register-page' %}">{% translate "REGISTER" %}</a>
+                        {% endif %}
+                    </div>
+                </li>
+
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">{% translate "LANGUAGE" %}</a>
+                    <div class="dropdown-content">
+                        <a class="dropdown-item" href="/en/">{% translate "English" %}</a>
+                        <a class="dropdown-item" href="/es/">{% translate "Spanish" %}</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <br>
 
-    <div class="container-fluid" >
-       <div class="col-sm-10">
-         <!-- add block content from html template -->
-         {% block content %}
-         
-         {% endblock %}
-       </div>
-     </div>
-   </div>
- </body>
+    <div class="container-fluid">
+        <div class="col-sm-10">
+            <!-- add block content from html template -->
+            {% block content %}
+
+            {% endblock %}
+        </div>
+    </div>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
 
+
+  

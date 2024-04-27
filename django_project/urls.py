@@ -21,10 +21,7 @@ from django.utils.translation import gettext_lazy as _
 
 urlpatterns = i18n_patterns(
     path(_('admin/'), admin.site.urls),
-
     #connect path to portfolio_app urls
     path('', include('parent_resource_app.urls')),
-
-
-    path('rosetta/', include('rosetta.urls')),
+    path('rosetta/', include('rosetta.urls')), #translation page - can go to to write translations
 )

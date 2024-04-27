@@ -1,17 +1,20 @@
 {% extends 'parent_resource_app/base_template.html' %}
+{% load i18n %}
 
 {% block content %}
-    <h1>Groups in Colorado</h1><br>
+    <h1>{% trans "Groups in Colorado" %}</h1><br>
     {% if organization_list %}
-        <ul class="list-group">
+        <div class="d-grid">
             {% for group in organization_list %}
-                <li class="a"><h2 class="normal">{{ group.name }}</h2>
-                    <p><strong>About: </strong>{{group.about}}</p>
-                    <a href="{{ group.get_absolute_url }}"><button class="edit_button">View Details</button></a>
-                </li> <br>
+                <div class="a">
+                    <h2 class="normal">{{ group.name }}</h2>
+                    <p><strong>{% trans "About" %}: </strong>{{ group.about }}</p>
+                    <a href="{{ group.get_absolute_url }}"><button class="edit_button">{% trans "View Details" %}</button></a>
+                </div> <br>
             {% endfor %}
-        </ul>
+        </div>
     {% else %}
-        <p>There are no groups registered.</p>
+        <p>{% trans "There are no groups registered." %}</p>
     {% endif %}
 {% endblock %}
+

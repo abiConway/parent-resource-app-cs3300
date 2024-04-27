@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-25 05:35-0600\n"
-"PO-Revision-Date: 2024-04-25 05:16-0600\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2024-04-27 02:29-0600\n"
+"PO-Revision-Date: 2024-04-27 06:03+0000\n"
+"Last-Translator:   <abigailconway07@gmail.com>\n"
 "Language-Team: \n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
@@ -18,6 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.4.2\n"
+"X-Translated-Using: django-rosetta 0.10.0\n"
 
 #: django_project/urls.py:23
 msgid "admin/"
@@ -599,6 +600,8 @@ msgid "Order"
 msgstr ""
 
 #: djvenv/lib/python3.11/site-packages/django/forms/formsets.py:499
+#: parent_resource_app/templates/parent_resource_app/event_detail.html:20
+#: parent_resource_app/templates/parent_resource_app/organization_detail.html:29
 msgid "Delete"
 msgstr ""
 
@@ -1234,146 +1237,261 @@ msgstr ""
 msgid "close"
 msgstr ""
 
-#: parent_resource_app/models.py:17
-msgid "Name"
-msgstr ""
-
-#: parent_resource_app/models.py:18
-msgid "Email"
+#: djvenv/lib/python3.11/site-packages/modeltranslation/widgets.py:24
+msgid "None"
 msgstr ""
 
 #: parent_resource_app/models.py:19
+msgid "Name"
+msgstr ""
+
+#: parent_resource_app/models.py:20
+#: parent_resource_app/templates/parent_resource_app/organization_detail.html:13
+msgid "Email"
+msgstr ""
+
+#: parent_resource_app/models.py:21
+#: parent_resource_app/templates/parent_resource_app/organization_detail.html:14
 msgid "Phone"
 msgstr ""
 
-#: parent_resource_app/models.py:25
+#: parent_resource_app/models.py:22
 msgid "about"
 msgstr ""
 
-#: parent_resource_app/models.py:52
+#: parent_resource_app/models.py:48
 msgid "Family Fun"
 msgstr ""
 
-#: parent_resource_app/models.py:53
+#: parent_resource_app/models.py:49
 msgid "Health and Well-being"
 msgstr ""
 
-#: parent_resource_app/models.py:54
+#: parent_resource_app/models.py:50
 msgid "Benefits or Financial Aid"
 msgstr ""
 
-#: parent_resource_app/models.py:59
+#: parent_resource_app/models.py:55
 msgid "0-1 years"
 msgstr ""
 
-#: parent_resource_app/models.py:60
+#: parent_resource_app/models.py:56
 msgid "1-2 years"
 msgstr ""
 
-#: parent_resource_app/models.py:61
+#: parent_resource_app/models.py:57
 msgid "2-3 years"
 msgstr ""
 
-#: parent_resource_app/models.py:62
+#: parent_resource_app/models.py:58
 msgid "3-4 years"
 msgstr ""
 
-#: parent_resource_app/models.py:63
+#: parent_resource_app/models.py:59
 msgid "4-5 years"
 msgstr ""
 
-#: parent_resource_app/models.py:64
+#: parent_resource_app/models.py:60
 msgid "5-6 years"
 msgstr ""
 
-#: parent_resource_app/models.py:65
+#: parent_resource_app/models.py:61
 msgid "6-7 years"
 msgstr ""
 
-#: parent_resource_app/models.py:66
+#: parent_resource_app/models.py:62
 msgid "7-8 years"
 msgstr ""
 
-#: parent_resource_app/models.py:67
+#: parent_resource_app/models.py:63
 msgid "8-9 years"
 msgstr ""
 
-#: parent_resource_app/models.py:68
+#: parent_resource_app/models.py:64
 msgid "9-10 years"
 msgstr ""
 
-#: parent_resource_app/models.py:69
+#: parent_resource_app/models.py:65
 msgid "10-11 years"
 msgstr ""
 
-#: parent_resource_app/models.py:70
+#: parent_resource_app/models.py:66
 msgid "11-12 years"
 msgstr ""
 
-#: parent_resource_app/models.py:71
+#: parent_resource_app/models.py:67
 msgid "12-13 year"
 msgstr ""
 
-#: parent_resource_app/models.py:72
+#: parent_resource_app/models.py:68
 msgid "13 or older"
 msgstr ""
 
-#: parent_resource_app/models.py:73
+#: parent_resource_app/models.py:69
 msgid "For Parents"
 msgstr ""
 
-#: parent_resource_app/models.py:74
+#: parent_resource_app/models.py:70
 msgid "All ages"
 msgstr ""
 
-#: parent_resource_app/models.py:78
+#: parent_resource_app/models.py:74
 msgid "Title"
 msgstr ""
 
-#: parent_resource_app/models.py:79
+#: parent_resource_app/models.py:75
 msgid "Type of Event"
 msgstr ""
 
-#: parent_resource_app/models.py:81
-msgid "Description"
-msgstr ""
-
-#: parent_resource_app/models.py:82
-msgid "Age Group"
-msgstr ""
-
-#: parent_resource_app/models.py:84
-msgid "Location"
-msgstr ""
-
-#: parent_resource_app/models.py:86
-msgid "Start Date"
-msgstr ""
-
-#: parent_resource_app/models.py:87
-msgid "End Date"
-msgstr ""
-
-#: parent_resource_app/models.py:88
+#: parent_resource_app/models.py:76
 msgid "Price"
 msgstr ""
 
-#: parent_resource_app/templates/parent_resource_app/base_template.html:112
+#: parent_resource_app/models.py:77
+msgid "Age Group"
+msgstr ""
+
+#: parent_resource_app/models.py:78
+msgid "Description"
+msgstr ""
+
+#: parent_resource_app/models.py:79
+msgid "Location"
+msgstr ""
+
+#: parent_resource_app/models.py:80
+msgid "Start Date"
+msgstr ""
+
+#: parent_resource_app/models.py:81
+msgid "End Date"
+msgstr ""
+
+#: parent_resource_app/templates/parent_resource_app/base_template.html:163
 msgid "HOME"
 msgstr ""
 
-#: parent_resource_app/templates/parent_resource_app/base_template.html:115
+#: parent_resource_app/templates/parent_resource_app/base_template.html:164
 msgid "GROUPS"
 msgstr ""
 
-#: parent_resource_app/templates/parent_resource_app/base_template.html:118
-msgid "LOGIN"
+#: parent_resource_app/templates/parent_resource_app/base_template.html:166
+msgid "ACCOUNT"
 msgstr ""
 
-#: parent_resource_app/templates/parent_resource_app/base_template.html:121
+#: parent_resource_app/templates/parent_resource_app/base_template.html:169
+msgid "PROFILE"
+msgstr ""
+
+#: parent_resource_app/templates/parent_resource_app/base_template.html:170
 msgid "LOGOUT"
 msgstr ""
 
-#: parent_resource_app/templates/parent_resource_app/base_template.html:128
-msgid "Language"
+#: parent_resource_app/templates/parent_resource_app/base_template.html:172
+msgid "LOGIN"
+msgstr ""
+
+#: parent_resource_app/templates/parent_resource_app/base_template.html:173
+msgid "REGISTER"
+msgstr ""
+
+#: parent_resource_app/templates/parent_resource_app/base_template.html:179
+msgid "LANGUAGE"
+msgstr ""
+
+#: parent_resource_app/templates/parent_resource_app/base_template.html:181
+msgid "English"
+msgstr ""
+
+#: parent_resource_app/templates/parent_resource_app/base_template.html:182
+msgid "Spanish"
+msgstr ""
+
+#: parent_resource_app/templates/parent_resource_app/create_organization.html:6
+msgid "Create Your Group's Profile"
+msgstr ""
+
+#: parent_resource_app/templates/parent_resource_app/event_detail.html:8
+msgid "Event Type:"
+msgstr ""
+
+#: parent_resource_app/templates/parent_resource_app/event_detail.html:9
+msgid "Price:"
+msgstr ""
+
+#: parent_resource_app/templates/parent_resource_app/event_detail.html:10
+msgid "Description:"
+msgstr ""
+
+#: parent_resource_app/templates/parent_resource_app/event_detail.html:11
+msgid "For Ages:"
+msgstr ""
+
+#: parent_resource_app/templates/parent_resource_app/event_detail.html:12
+msgid "Where:"
+msgstr ""
+
+#: parent_resource_app/templates/parent_resource_app/event_detail.html:13
+msgid "When:"
+msgstr ""
+
+#: parent_resource_app/templates/parent_resource_app/event_detail.html:19
+#: parent_resource_app/templates/parent_resource_app/organization_detail.html:28
+msgid "Edit"
+msgstr ""
+
+#: parent_resource_app/templates/parent_resource_app/index.html:4
+msgid "Upcoming Events"
+msgstr ""
+
+#: parent_resource_app/templates/parent_resource_app/index.html:11
+msgid "Ages"
+msgstr ""
+
+#: parent_resource_app/templates/parent_resource_app/index.html:13
+msgid "Offered by"
+msgstr ""
+
+#: parent_resource_app/templates/parent_resource_app/index.html:14
+msgid "Event Details"
+msgstr ""
+
+#: parent_resource_app/templates/parent_resource_app/index.html:15
+msgid "Group Details"
+msgstr ""
+
+#: parent_resource_app/templates/parent_resource_app/index.html:21
+msgid "There are no upcoming events registered."
+msgstr ""
+
+#: parent_resource_app/templates/parent_resource_app/organization_detail.html:6
+msgid "Edit Profile"
+msgstr ""
+
+#: parent_resource_app/templates/parent_resource_app/organization_detail.html:7
+msgid "Create New Event"
+msgstr ""
+
+#: parent_resource_app/templates/parent_resource_app/organization_detail.html:19
+msgid "Events"
+msgstr ""
+
+#: parent_resource_app/templates/parent_resource_app/organization_detail.html:35
+msgid "There are no events from this group."
+msgstr ""
+
+#: parent_resource_app/templates/parent_resource_app/organization_list.html:5
+msgid "Groups in Colorado"
+msgstr ""
+
+#: parent_resource_app/templates/parent_resource_app/organization_list.html:10
+msgid "About"
+msgstr ""
+
+#: parent_resource_app/templates/parent_resource_app/organization_list.html:11
+msgid "View Details"
+msgstr ""
+
+#: parent_resource_app/templates/parent_resource_app/organization_list.html:16
+msgid "There are no groups registered."
 msgstr ""

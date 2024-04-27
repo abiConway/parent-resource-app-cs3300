@@ -1,36 +1,37 @@
 {% extends 'parent_resource_app/base_template.html' %}
+{% load i18n %}
 
 {% block content %}
-    {% if user.id == organization.user.id  %}
-        <a aria-current="page" href="{% url 'updateOrganization' organization.id %}"><button class="button">Edit Profile</button></a>
-        <a aria-current="page" href="{% url 'createEvent' organization.id %}"><button class="button">Create New Event</button></a> <br><br>
-    {% endif %}
-
+    
+    <br>
     <div class="card">
         <p class="card-header">{{ organization.name }} </p>
         <div class="card-body">
-            <p class='card-text'>Email: {{ email }}</p>
-            <p class='card-text'>Phone: {{ organization.phone }}</p>
-            <p class='card-text'> {{ organization.about }}</p>
+            <p class='card-text'><strong>{% trans "Email" %}:</strong> {{ organization.email }}</p>
+            <p class='card-text'><strong>{% trans "Phone" %}:</strong> {{ organization.phone }}</p>
+            <p class='card-text'> {% trans organization.about %}</p>
         </div>
-    </div><br>
+    </div>
 
-    <h2><strong>Events:</strong></h2>
+    {% if user.id == organization.user.id  %}
+        <a aria-current="page" href="{% url 'updateOrganization' organization.id %}"><button class="button">{% trans "Edit Profile" %}</button></a>
+        <a aria-current="page" href="{% url 'createEvent' organization.id %}"><button class="button">{% trans "Create New Event" %}</button></a> <br><br>
+    {% endif %}
 
     {% if organization.event_set.all %}
-        <div class="card">
+        <div class="d-grid">
             {% for event in organization.event_set.all %}
-                <div class="card-body">
-                    <p class="card-header"><a class="textlink" href="{{ event.get_absolute_url }}">{{ event.title }}</a></p>
-                    <p class="card-text">{{ event.description }}</p>
+                <div class="a">
+                    <h3><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></h3>
+                    <p>{{ event.description }}</p>
                     {% if user.id == organization.user.id%}
-                        <a aria-current="page" href="{% url 'updateEvent' organization.id event.id %}" ><button class="edit_button">Edit</button></a>
-                        <a aria-current="page" href="{% url 'deleteEvent' organization.id event.id %}"><button class="edit_button">Delete</button></a> 
+                        <a aria-current="page" href="{% url 'updateEvent' organization.id event.id %}" ><button class="edit_button">{% trans "Edit" %}</button></a>
+                        <a aria-current="page" href="{% url 'deleteEvent' organization.id event.id %}"><button class="edit_button">{% trans "Delete" %}</button></a> 
                     {% endif %}
                 </div><br>
             {% endfor %}
         </div>
     {% else %}
-        <p>There are no events from this group.</p>
+        <p>{% trans "There are no events from this group." %}</p>
     {% endif %}
 {% endblock %}
