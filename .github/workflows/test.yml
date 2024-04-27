@@ -25,5 +25,5 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Run Django test
         run: |
-          cd parent-resource-app-cs3300
+          cd parent-resource-app
           python manage.py test
